@@ -59,4 +59,28 @@ public class Point {
                 + (xyz.d2 - other.xyz.d2) * (xyz.d2 - other.xyz.d2)
                 + (xyz.d3 - other.xyz.d3) * (xyz.d3 - other.xyz.d3);
     }
+
+    /**
+     * return the distance between two points
+     * @param other - the second point
+     * @return the distance
+     */
+    public double distance(Point other){
+        return Math.sqrt(distanceSquared(other));
+    }
+    @Override
+    public String toString() {
+        return "Coordinates: " + xyz.toString();
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) {
+            return true;
+        } else{
+            if(!(obj instanceof Point)) {
+                return false;
+            }
+            return xyz == ((Point)obj).xyz;
+        }
+    }
 }
