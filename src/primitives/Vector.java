@@ -13,7 +13,7 @@ public class Vector extends Point {
      */
     public Vector(double x, double y, double z)  {
         super(x, y, z);
-        if (xyz == Double3.ZERO)
+        if (xyz.equals(Double3.ZERO))
             throw new IllegalArgumentException("zero vector");
     }
 
@@ -61,7 +61,7 @@ public class Vector extends Point {
      * @return the product vector
      */
     public Vector crossProduct(Vector v) {
-    return new Vector((xyz.d2 * v.xyz.d3) - (xyz.d3 * v.xyz.d2),
+        return new Vector((xyz.d2 * v.xyz.d3) - (xyz.d3 * v.xyz.d2),
             (xyz.d3 * v.xyz.d1) - (xyz.d1 * v.xyz.d3),
             (xyz.d1 * v.xyz.d2) - (xyz.d2 * v.xyz.d1));
     }
