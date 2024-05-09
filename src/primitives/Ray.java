@@ -5,8 +5,8 @@ package primitives;
  * @author Sagiv Maoz and Yair Elhasid
  */
 public class Ray {
-    private Point head;
-    private Vector direction;
+    final private Point head;
+    final private Vector direction;
 
     /**
      * full constructor

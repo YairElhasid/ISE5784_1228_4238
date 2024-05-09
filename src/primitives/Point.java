@@ -37,6 +37,8 @@ public class Point {
      * @return the result as a new vector
      */
     public Vector subtract(Point other){
+        if (this.xyz.equals(other.xyz))
+            throw new ArithmeticException()
         return new Vector(xyz.subtract(other.xyz));
     }
 
