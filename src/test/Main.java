@@ -7,6 +7,8 @@ import static primitives.Util.isZero;
 import primitives.*;
 
 /**
+ * Yair Elhasid - yairyair613859@gmail.com - 316291228
+ * Sagiv Maoz - sagivmaoz@gmail.com - 325570257
  * Test program for the 1st stage
  * @author Dan Zilberstein
  */
