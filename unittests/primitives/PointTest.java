@@ -1,31 +1,31 @@
 package primitives;
 
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 /**
  * Class representing unit tests for the Point class.
  *
- * @author Yair Elhasid and Sagiv Maoz
  */
 class PointTest {
 
-    Point  p1         = new Point(1, 2, 3);
-    Point  p2         = new Point(2, 4, 6);
-    Point  p3         = new Point(2, 4, 5);
+    Point p1 = new Point(1, 2, 3);
+    Point p2 = new Point(2, 4, 6);
+    Point p3 = new Point(2, 4, 5);
 
     /**
      * Test method for {@link primitives.Point#subtract(primitives.Point)}.
      */
     @Test
-    void subtract() {
+    void testSubtract() {
         // ============ Equivalence Partitions Tests ==============
-            assertEquals(new Vector(1, 2, 3), p1.subtract(p2), "Incorrect subtraction");
+        // TC00: subtract two points
+        assertEquals(new Vector(1, 2, 3), p2.subtract(p1), "Incorrect subtraction");
+        // TC01:check that normal subtraction do nor throws anything
+        assertDoesNotThrow(() -> p1.subtract(p2), "failed subtraction");
 
         // =============== Boundary Values Tests ==================
+        // TC10: subtraction gives zero vector
         assertThrows(IllegalArgumentException.class ,() -> p2.subtract(new Point(p2.xyz)), "did not subtract to zero");
     }
 
@@ -33,10 +33,13 @@ class PointTest {
      * Test method for {@link primitives.Point#add(primitives.Vector)}.
      */
     @Test
-    void add() {
+    void testAdd() {
         // ============ Equivalence Partitions Tests ==============
+        // TC00: adds two points
         assertEquals(new Vector(3, 6, 9), p1.add(new Vector(p2.xyz)), "Incorrect add");
+
         // =============== Boundary Values Tests ==================
+        // TC10: in case that the add will bring 0 point
         assertEquals(Point.ZERO, p2.subtract(new Point(-2, -4, -6)), "did not add to zero");
     }
 
@@ -44,31 +47,27 @@ class PointTest {
      * Test method for {@link primitives.Point#distanceSquared(primitives.Point)}.
      */
     @Test
-    void distanceSquared() {
+    void testDistanceSquared() {
         // ============ Equivalence Partitions Tests ==============
-        assertEquals(14 , p2.distance(p1), "wrong squared distance");
+        // TC00: squared distance between 2 points
+        assertEquals(14, p2.distance(p1), "wrong squared distance");
+
         // =============== Boundary Values Tests ==================
-        assertEquals(0 , p2.distance(p2), "not zero distance");
+        // TC10: when the squared distance is 0
+        assertEquals(0, p2.distance(p2), "not zero distance");
     }
 
     /**
      * Test method for {@link primitives.Point#distance(primitives.Point)}.
      */
     @Test
-    void distance() {
+    void testDistance() {
         // ============ Equivalence Partitions Tests ==============
-        assertEquals(Math.sqrt(14) , p2.distanceSquared(p1), "wrong distance");
-        // =============== Boundary Values Tests ==================
-        assertEquals(0 , p2.distanceSquared(p2), "not zero distance");
-    }
-
-    /**
-     * Test method for {@link primitives.Point#equals(Object)}.
-     */
-    @Test
-    void testEquals() {
-        // ============ Equivalence Partitions Tests ==============
+        // TC00: distance between 2 points
+        assertEquals(Math.sqrt(14), p2.distanceSquared(p1), "wrong distance");
 
         // =============== Boundary Values Tests ==================
+        // TC10: when the distance is 0
+        assertEquals(0, p2.distanceSquared(p2), "not zero distance");
     }
 }
