@@ -37,8 +37,6 @@ public class Point {
      * @return the result as a new vector
      */
     public Vector subtract(Point other){
-        if (this.xyz.equals(other.xyz))
-            throw new IllegalArgumentException("zero vector");
         return new Vector(xyz.subtract(other.xyz));
     }
 
@@ -76,13 +74,7 @@ public class Point {
     }
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) {
-            return true;
-        } else{
-            if(!(obj instanceof Point)) {
-                return false;
-            }
-            return xyz.equals(((Point)obj).xyz);
-        }
+        if(this == obj) return true;
+        return obj instanceof Point other && xyz.equals(other.xyz);
     }
 }

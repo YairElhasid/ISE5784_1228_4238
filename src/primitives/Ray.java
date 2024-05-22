@@ -21,10 +21,10 @@ public class Ray {
     public String toString() {
         return "point: " + head.toString() + " " + direction.toString();
     }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
-        if (!(obj instanceof Ray)) return false;
-        return head.equals(((Ray) obj).head) && direction.equals(((Ray) obj).direction);
+        return obj instanceof Ray other && head.equals(other.head) && direction.equals(other.direction);
     }
 }

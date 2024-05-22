@@ -27,7 +27,6 @@ public class Vector extends Point {
             throw new IllegalArgumentException("zero vector");
 
     }
-
     /**
      * adds a new vector to ours
      * @param v - the other vector
@@ -40,9 +39,9 @@ public class Vector extends Point {
     /**
      * scale the vector in scalar
      * @param scale - a number
-     * @return the scaled vaetor
+     * @return the scaled vector
      */
-    public Vector Scale(double scale) {
+    public Vector scale(double scale) {
         return new Vector(xyz.scale(scale));
     }
 
@@ -65,7 +64,6 @@ public class Vector extends Point {
             (xyz.d3 * v.xyz.d1) - (xyz.d1 * v.xyz.d3),
             (xyz.d1 * v.xyz.d2) - (xyz.d2 * v.xyz.d1));
     }
-
     /**
      * calculates the squared length of the vector
      * @return the outcome
@@ -95,6 +93,7 @@ public class Vector extends Point {
     }
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(this == obj) return true;
+        return obj instanceof Vector other && super.equals(other);
     }
 }
