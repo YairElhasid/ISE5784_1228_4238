@@ -17,6 +17,22 @@ public class Ray {
         this.head = head;
         this.direction = direction.normalize();
     }
+
+    /**
+     * head getter
+     * @return the head point of the ray
+     */
+    public Point getHead() {
+        return head;
+    }
+    /**
+     * direction getter
+     * @return the direction vector of the ray
+     */
+    public Vector getDirection() {
+        return direction;
+    }
+
     @Override
     public String toString() {
         return "point: " + head.toString() + " " + direction.toString();

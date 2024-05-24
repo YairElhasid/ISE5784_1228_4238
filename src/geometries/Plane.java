@@ -25,7 +25,7 @@ public class Plane implements Geometry{
      * @param point3 - third point
      */
     public Plane(Point point1, Point point2, Point point3 ) {
-        normal = null;
+        normal = (point1.subtract(point2).crossProduct(point2.subtract(point3))).normalize();
         point = point1;
     }
 

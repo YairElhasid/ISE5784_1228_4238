@@ -26,7 +26,7 @@ class PlaneTest {
         // TC10: case that 2 out of 3 points are the same
         assertThrows(IllegalArgumentException.class, () -> new Plane(new Point(1, 0, 0), new Point(1, 0, 0), new Point(0, 0, 1)), "same points at constructor do not throws exception");
         // TC11: case that the 3 points are on the same ray
-        assertThrows(IllegalArgumentException.class, () -> new Plane(new Point(1, 0, 0), new Point(2, 0, 0), new Point(3, 0, 1)), "the points are in the same line in the constructor but it is not throwing exception");
+        assertThrows(IllegalArgumentException.class, () -> new Plane(new Point(1, 0, 0), new Point(2, 0, 0), new Point(3, 0, 0)), "the points are in the same line in the constructor but it is not throwing exception");
     }
 
     /** Test method for {@link geometries.Plane#Plane(Point, primitives.Vector)}. */
