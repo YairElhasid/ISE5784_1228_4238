@@ -25,7 +25,7 @@ public class Cylinder extends Tube {
         if (p.equals(axis.getHead())) {
             return (axis.getDirection());
         }
-        double t = axis.getDirection().dotProduct(p.subtract(axis.getHead()));
+        double t = (axis.getDirection()).dotProduct(p.subtract(axis.getHead()));
         if (t == 0 || t == height){ //if the point is on the base, top or bottom:
             return (axis.getDirection());
         }

@@ -36,11 +36,11 @@ class PointTest {
     void testAdd() {
         // ============ Equivalence Partitions Tests ==============
         // TC00: adds two points
-        assertEquals(new Vector(3, 6, 9), p1.add(new Vector(p2.xyz)), "Incorrect add");
+        assertEquals(new Point(3, 6, 9), p1.add(new Vector(p2.xyz)), "Incorrect add");
 
         // =============== Boundary Values Tests ==================
         // TC10: in case that the add will bring 0 point
-        assertEquals(Point.ZERO, p2.subtract(new Point(-2, -4, -6)), "did not add to zero");
+        assertEquals(Point.ZERO, p2.add(new Vector(-2, -4, -6)), "did not add to zero");
     }
 
     /**
@@ -50,7 +50,7 @@ class PointTest {
     void testDistanceSquared() {
         // ============ Equivalence Partitions Tests ==============
         // TC00: squared distance between 2 points
-        assertEquals(14, p2.distance(p1), "wrong squared distance");
+        assertEquals(14, p2.distanceSquared(p1), "wrong squared distance");
 
         // =============== Boundary Values Tests ==================
         // TC10: when the squared distance is 0
@@ -64,7 +64,7 @@ class PointTest {
     void testDistance() {
         // ============ Equivalence Partitions Tests ==============
         // TC00: distance between 2 points
-        assertEquals(Math.sqrt(14), p2.distanceSquared(p1), "wrong distance");
+        assertEquals(Math.sqrt(14), p2.distance(p1), "wrong distance");
 
         // =============== Boundary Values Tests ==================
         // TC10: when the distance is 0
