@@ -6,9 +6,13 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests for triangle
+ * @author Sagiv Maoz and Yair Elhasid
+ */
 class TriangleTest {
 
-    Triangle triangle = new Triangle(new Point(1,0,0), new Point(0,1,0), new Point(0,0,1));
+    private Triangle triangle = new Triangle(new Point(1,0,0), new Point(0,1,0), new Point(0,0,1));
 
     /** Test method for {@link geometries.Triangle#getNormal(Point)}. */
     @Test

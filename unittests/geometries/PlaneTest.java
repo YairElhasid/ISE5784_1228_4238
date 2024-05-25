@@ -6,9 +6,13 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests for plane
+ * @author Sagiv Maoz and Yair Elhasid
+ */
 class PlaneTest {
 
-    Plane plane = new Plane(new Point(1,0,0), new Vector(1 / Math.sqrt(3), 1 / Math.sqrt(3), 1 / Math.sqrt(3)));
+    private Plane plane = new Plane(new Point(1,0,0), new Vector(1 / Math.sqrt(3), 1 / Math.sqrt(3), 1 / Math.sqrt(3)));
 
 
     /** Test method for {@link geometries.Plane#Plane(Point, Point, Point)}. */

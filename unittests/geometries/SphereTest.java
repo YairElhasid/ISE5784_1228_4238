@@ -6,9 +6,13 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests for sphere
+ * @author Sagiv Maoz and Yair Elhasid
+ */
 class SphereTest {
 
-    Sphere sphere = new Sphere(new Point(2, 3, 4), 5);
+    private Sphere sphere = new Sphere(new Point(2, 3, 4), 5);
 
     /** Test method for {@link geometries.Sphere#getNormal(Point)}. */
     @Test

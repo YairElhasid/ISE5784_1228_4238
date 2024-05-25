@@ -7,9 +7,13 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests for tube
+ * @author Sagiv Maoz and Yair Elhasid
+ */
 class TubeTest {
 
-    Tube tube = new Tube(5, new Ray(new Point(2, 3, 4), new Vector(0, 1, 0)));
+    private Tube tube = new Tube(5, new Ray(new Point(2, 3, 4), new Vector(0, 1, 0)));
 
     /**
      * Test method for {@link geometries.Tube#getNormal(Point)}

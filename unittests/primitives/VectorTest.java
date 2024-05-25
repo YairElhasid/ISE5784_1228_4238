@@ -1,21 +1,22 @@
 package primitives;
-/**
- * Class representing unit tests for the Vector class.
- *
- * @author Yair Elhasid and Sagiv Maoz
- */
+
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Class representing unit tests for the Vector class.
+ * @author Yair Elhasid and Sagiv Maoz
+ */
 class VectorTest {
-    Vector v1         = new Vector(1, 2, 3);
-    Vector v1Opposite = new Vector(-1, -2, -3);
-    Vector v2         = new Vector(-2, -4, -6);
-    Vector v3         = new Vector(0, 3, -2);
-    Vector v4         = new Vector(1, 2, 2);
-    Vector v5         = new Vector(1,1,2);
-    Vector v6         = new Vector(0,0,1);
+    private Vector v1         = new Vector(1, 2, 3);
+    private Vector v1Opposite = new Vector(-1, -2, -3);
+    private Vector v2         = new Vector(-2, -4, -6);
+    private Vector v3         = new Vector(0, 3, -2);
+    private Vector v4         = new Vector(1, 2, 2);
+    private Vector v5         = new Vector(1,1,2);
+    private Vector v6         = new Vector(0,0,1);
     private final double DELTA = 0.000001;
     /**
      * Test method for {@link primitives.Vector#Vector(double,double,double)}.
