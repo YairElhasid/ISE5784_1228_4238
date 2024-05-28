@@ -58,4 +58,27 @@ class PlaneTest {
         // TC01: check the normal returned
         assertTrue(new Vector(1 / Math.sqrt(3), 1 / Math.sqrt(3), 1 / Math.sqrt(3)).equals(plane.getNormal()) || new Vector(-1 / Math.sqrt(3), -1 / Math.sqrt(3), -1 / Math.sqrt(3)).equals(plane.getNormal()) , "wrong normal returned");
     }
+
+    /** Test method for {@link geometries.Plane#getNormal()}. */
+    @Test
+    void testFindIntersections() {
+        // ============ Equivalence Partitions Tests ==============
+        // TC00: the ray is intersecting the plane
+        // TC01: the ray is not intersecting the plane
+
+        // =============== Boundary Values Tests ==================
+        // **** Group: the ray is parallel to the plane
+        //TC11: the ray is on the plane
+        //TC12: the ray is not on the plane
+
+        // **** Group: the ray is vertical to the plane
+        // TC13: the ray is starting before the plane
+        // TC14: the ray is starting after the plane
+        // TC15: the ray is starting on the plane
+
+        // **** Group: the ray is not parallel and not vertical to the plane
+        //TC16: the ray is starting at the plane
+        //TC17: the ray is starting at the point that representing the plane
+
+    }
 }

@@ -1,6 +1,8 @@
 package geometries;
 import primitives.*;
 
+import static primitives.Util.isZero;
+
 /**
  * the class implements cylinder shape
  */
@@ -26,7 +28,7 @@ public class Cylinder extends Tube {
             return (axis.getDirection());
         }
         double t = (axis.getDirection()).dotProduct(p.subtract(axis.getHead()));
-        if (t == 0 || t == height){ //if the point is on the base, top or bottom:
+        if (isZero(t) || isZero(t - height)){ //if the point is on the base, top or bottom:
             return (axis.getDirection());
         }
         return super.getNormal(p);
