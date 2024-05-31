@@ -6,7 +6,7 @@ import primitives.*;
  * interface for geometrical shapes
  * @author Sagiv Maoz and Yair Elhasid
  */
-public interface Geometry {
+public interface Geometry extends Intersectable {
     /**
      * ca
      * @param p - a point on the shape

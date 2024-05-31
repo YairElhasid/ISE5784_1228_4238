@@ -1,6 +1,8 @@
 package geometries;
 import primitives.*;
 
+import java.util.List;
+
 import static primitives.Util.isZero;
 
 /**
@@ -27,6 +29,11 @@ public class Tube extends RadialGeometry {
         double t = axis.getDirection().dotProduct(p.subtract(axis.getHead()));
         Point o = (isZero(t)) ? axis.getHead() : axis.getHead().add(axis.getDirection().scale(t));
         return p.subtract(o).normalize() ;
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        return null;
     }
 
 }

@@ -1,6 +1,8 @@
 package geometries;
 import primitives.*;
 
+import java.util.List;
+
 import static primitives.Util.isZero;
 
 /**
@@ -32,5 +34,10 @@ public class Cylinder extends Tube {
             return (axis.getDirection());
         }
         return super.getNormal(p);
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        return null;
     }
 }

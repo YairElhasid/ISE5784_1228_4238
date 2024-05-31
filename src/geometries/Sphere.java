@@ -1,5 +1,8 @@
 package geometries;
 import primitives.*;
+
+import java.util.List;
+
 /**
  * class that implements sphere
  * @author Sagiv Maoz and Yair Elhasid
@@ -20,6 +23,11 @@ public class Sphere extends RadialGeometry{
     @Override
     public Vector getNormal(Point p) {
         return  p.subtract(center).normalize();
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        return null;
     }
 
 }
