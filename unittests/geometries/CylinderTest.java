@@ -7,9 +7,14 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests for cylinder
+ * @author Sagiv Maoz and Yair Elhasid
+ */
 class CylinderTest {
 
-    Cylinder cylinder = new Cylinder(5, new Ray(new Point(2, 3, 4), new Vector(0,0,1)), 10);
+
+    private Cylinder cylinder = new Cylinder(5, new Ray(new Point(2, 3, 4), new Vector(1,0,0)), 10);
 
     /** Test method for {@link geometries.Cylinder#getNormal(Point)}. */
     @Test

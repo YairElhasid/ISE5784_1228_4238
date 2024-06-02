@@ -1,6 +1,10 @@
 package geometries;
 import primitives.*;
 
+import java.util.List;
+
+import static primitives.Util.isZero;
+
 /**
  * the class implements cylinder shape
  */
@@ -25,10 +29,15 @@ public class Cylinder extends Tube {
         if (p.equals(axis.getHead())) {
             return (axis.getDirection());
         }
-        double t = axis.getDirection().dotProduct(p.subtract(axis.getHead()));
-        if (t == 0 || t == height){ //if the point is on the base, top or bottom:
+        double t = (axis.getDirection()).dotProduct(p.subtract(axis.getHead()));
+        if (isZero(t) || isZero(t - height)){ //if the point is on the base, top or bottom:
             return (axis.getDirection());
         }
         return super.getNormal(p);
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        return null;
     }
 }

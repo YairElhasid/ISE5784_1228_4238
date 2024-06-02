@@ -87,10 +87,12 @@ public class Vector extends Point {
         double len = this.length();
         return new Vector(xyz.d1 / len, xyz.d2 / len, xyz.d3 / len);
     }
+
     @Override
     public String toString() {
         return "vector's head: " + xyz.toString();
     }
+
     @Override
     public boolean equals(Object obj) {
         if(this == obj) return true;
