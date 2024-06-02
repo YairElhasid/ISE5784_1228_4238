@@ -90,18 +90,18 @@ public class PolygonTest {
    @Test
    void testFindIntersections() {
       // ============ Equivalence Partitions Tests ==============
-      // TC00: the intersection point with the plane is inside the plane
+      // TC00: the intersection point with the plane is inside the plane (1 point)
 
-      // TC01: the intersection point with the plane is outside the plane and parallel to edge
+      // TC01: the intersection point with the plane is outside the plane and parallel to edge (0 points)
 
-      // TC02: the intersection point with the plane is outside the plane and parallel to vertex
+      // TC02: the intersection point with the plane is outside the plane and parallel to vertex (0 points)
 
       // =============== Boundary Values Tests ==================
-      // TC10: the intersection point with the plane is on edge of the plane
+      // TC10: the intersection point with the plane is on edge of the plane (0 points)
 
-      // TC11: the intersection point with the plane is on vertex of the plane
+      // TC11: the intersection point with the plane is on vertex of the plane (0 points)
 
-      // TC12: the intersection point with the plane is on continuation of an edge of the plane
+      // TC12: the intersection point with the plane is on continuation of an edge of the plane (0 points)
    }
 
 }
