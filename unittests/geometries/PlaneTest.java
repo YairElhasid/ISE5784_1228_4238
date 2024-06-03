@@ -2,7 +2,10 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -64,6 +67,7 @@ class PlaneTest {
     void testFindIntersections() {
         // ============ Equivalence Partitions Tests ==============
         // TC00: the ray is intersecting the plane
+        assertEquals(List.of(new Point(4, 7, 7)), sphere2.findIntsersections(new Ray(new Point(2,5,5), new Vector(1,1,1))), "wrong intersection, regular intersection");
         // TC01: the ray is not intersecting the plane
 
         // =============== Boundary Values Tests ==================
