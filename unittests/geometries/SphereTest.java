@@ -30,7 +30,7 @@ class SphereTest {
     void testFindIntersections() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: Ray's line is outside the sphere (0 points)
-        assertNull(sphere2.findIntsersections(new Ray(new Point(8,8,8), new Vector(-1,-1,-1))), "wrong intersection, regular ray that not supposed to intersect the sphere");
+        assertNull(sphere2.findIntsersections(new Ray(new Point(8,8,8), new Vector(-2,4,3))), "wrong intersection, regular ray that not supposed to intersect the sphere");
 
         // TC02: Ray starts before and crosses the sphere (2 points)
         assertEquals(List.of(new Point(2.44, 3.88, 3.88), new Point(4,7,7)), sphere2.findIntsersections(new Ray(new Point(1,1,1), new Vector(2,3,3))), "wrong intersection, regular ray");
