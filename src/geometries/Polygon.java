@@ -86,6 +86,21 @@ public class Polygon implements Geometry {
 
    @Override
    public List<Point> findIntsersections(Ray ray) {
-      return null;
+      List<Point> intersection = plane.findIntsersections(ray);
+      if(intersection == null) return null;
+      Point p = intersection.getFirst();
+      try{
+         Vector lastIteration = (vertices.get(1).subtract(vertices.get(0))).crossProduct(vertices.get(0).subtract(p));
+         for(int i = 1; i < size; ++i) {
+            Vector currentIteration = (vertices.get((i + 1) % size).subtract(vertices.get(i))).crossProduct(vertices.get(i).subtract(p));
+            if (lastIteration.dotProduct(currentIteration) < 0) return null;
+            lastIteration = currentIteration;
+         }
+      }
+      //if there was one or more zero vectors then the point is not on the polygon
+      catch(IllegalArgumentException exp) {
+         return null;
+      }
+   return intersection;
    }
 }

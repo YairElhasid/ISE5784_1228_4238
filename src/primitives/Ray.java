@@ -35,7 +35,7 @@ public class Ray {
 
     @Override
     public String toString() {
-        return "point: " + head.toString() + " " + direction.toString();
+        return "{" + head.toString() + " +t" + direction.toString() + "}";
     }
 
     @Override

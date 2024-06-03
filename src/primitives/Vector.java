@@ -90,7 +90,7 @@ public class Vector extends Point {
 
     @Override
     public String toString() {
-        return "vector's head: " + xyz.toString();
+        return xyz.toString();
     }
 
     @Override

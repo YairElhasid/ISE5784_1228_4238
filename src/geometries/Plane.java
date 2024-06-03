@@ -1,5 +1,7 @@
 package geometries;
 import primitives.*;
+import static primitives.Util.*;
+
 
 import java.util.List;
 
@@ -47,6 +49,19 @@ public class Plane implements Geometry{
 
     @Override
     public List<Point> findIntsersections(Ray ray) {
-        return List.of();
+        double denominator = normal.dotProduct(ray.getDirection());
+        double nominator = 0;
+        if (isZero(denominator)) return null;
+        try {
+             nominator = normal.dotProduct(point.subtract(ray.getHead()));
+        }
+        // in case that the head of the ray is on the point of the plane
+        catch (IllegalArgumentException exp){
+            return null;
+        }
+        double t = nominator / denominator;
+        // if the ray start on/after the plane
+        if (t<0 || isZero(t)) return null;
+        return List.of(ray.getHead().add(ray.getDirection().scale(t)));
     }
 }

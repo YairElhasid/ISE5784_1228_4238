@@ -20,6 +20,21 @@ public class Triangle extends Polygon {
 
     @Override
     public List<Point> findIntsersections(Ray ray) {
-        return List.of();
+        List<Point> intersection = plane.findIntsersections(ray);
+        if(intersection == null) return null;
+        Point p = intersection.getFirst();
+        try{
+            Vector lastIteration = (vertices.get(1).subtract(vertices.get(0))).crossProduct(vertices.get(0).subtract(p));
+            for(int i = 1; i < 3; ++i) {
+                Vector currentIteration = (vertices.get((i + 1) % 3).subtract(vertices.get(i))).crossProduct(vertices.get(i).subtract(p));
+                if (lastIteration.dotProduct(currentIteration) < 0) return null;
+                lastIteration = currentIteration;
+            }
+        }
+        //if there was one or more zero vectors then the point is not on the polygon
+        catch(IllegalArgumentException exp) {
+            return null;
+        }
+        return intersection;
     }
 }
