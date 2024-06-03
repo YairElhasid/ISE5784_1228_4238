@@ -43,7 +43,7 @@ public class Sphere extends RadialGeometry{
             return null;
         if(tm <= th)
             return List.of(head.add(direction.scale(th + tm)));
-        return List.of(head.add(direction.scale(th - tm)), head.add(direction.scale(th + tm)));
+                return List.of(head.add(direction.scale(th - tm)), head.add(direction.scale(th + tm)));
     }
 
 }
