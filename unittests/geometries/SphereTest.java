@@ -25,7 +25,7 @@ class SphereTest {
 
     }
 
-    /** Test method for {@link geometries.Sphere#getNormal(Point)}. */
+    /** Test method for {@link geometries.Sphere#findIntsersections(Ray)}. */
     @Test
     void testFindIntersections() {
         // ============ Equivalence Partitions Tests ==============
