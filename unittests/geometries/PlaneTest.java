@@ -15,7 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class PlaneTest {
 
-    private Plane plane = new Plane(new Point(1,0,0), new Vector(1 / Math.sqrt(3), 1 / Math.sqrt(3), 1 / Math.sqrt(3)));
+    private final Plane plane = new Plane(new Point(1,0,0), new Vector(1 / Math.sqrt(3), 1 / Math.sqrt(3), 1 / Math.sqrt(3)));
+    private final Plane plane2 = new Plane(new Point(2,0,0), new Point(0,2,0), new Point(0,0,2));
 
 
     /** Test method for {@link geometries.Plane#Plane(Point, Point, Point)}. */
@@ -66,23 +67,36 @@ class PlaneTest {
     @Test
     void testFindIntersections() {
         // ============ Equivalence Partitions Tests ==============
-        // TC00: the ray is intersecting the plane
-        assertEquals(List.of(new Point(4, 7, 7)), sphere2.findIntsersections(new Ray(new Point(2,5,5), new Vector(1,1,1))), "wrong intersection, regular intersection");
-        // TC01: the ray is not intersecting the plane
+        // TC00: the ray is intersecting the plane (1 point)
+        assertEquals(List.of(new Point(2,0,0)), plane2.findIntsersections(new Ray(new Point(3,1, 0), new Vector(-1,-1,0))), "wrong intersection, regular ray intersects the plane");
+
+        // TC01: the ray is not intersecting the plane (0 points)
+        assertNull(plane2.findIntsersections(new Ray(new Point(1,-1, 0), new Vector(-1,-1,0))), "wrong intersection, regular ray does not intersects the plane");
 
         // =============== Boundary Values Tests ==================
         // **** Group: the ray is parallel to the plane
-        //TC11: the ray is on the plane
-        //TC12: the ray is not on the plane
+        //TC11: the ray is on the plane (0 point)
+        assertNull(plane2.findIntsersections(new Ray(new Point(2,1, -1), new Vector(0,1, -1))), "wrong intersection, parallel ray on the plane");
+
+        //TC12: the ray is not on the plane (0 points)
+        assertNull(plane2.findIntsersections(new Ray(new Point(4,4,4), new Vector(0,1, -1))), "wrong intersection, parallel ray is not on the plane");
 
         // **** Group: the ray is vertical to the plane
-        // TC13: the ray is starting before the plane
-        // TC14: the ray is starting after the plane
-        // TC15: the ray is starting on the plane
+        // TC13: the ray is starting before the plane (1 point)
+        assertEquals(List.of(new Point(2,0,0)), plane2.findIntsersections(new Ray(new Point(3,1, 1), new Vector(-1,-1,-1))), "wrong intersection, orthogonal ray intersects the plane");
+
+        // TC14: the ray is starting after the plane (0 points)
+        assertNull(plane2.findIntsersections(new Ray(new Point(1,-1, -1), new Vector(-1,-1,-1))), "wrong intersection, orthogonal ray does not intersects the plane");
+
+        // TC15: the ray is starting on the plane (0 points)
+        assertNull(plane2.findIntsersections(new Ray(new Point(2,0, 0), new Vector(-1,-1,-1))), "wrong intersection, orthogonal ray starts on the plane");
 
         // **** Group: the ray is not parallel and not vertical to the plane
-        //TC16: the ray is starting at the plane
-        //TC17: the ray is starting at the point that representing the plane
+        //TC16: the ray is starting at the plane (0 points)
+        assertNull(plane2.findIntsersections(new Ray(new Point(1,1,0), new Vector(-8,-8,-4))), "wrong intersection - starts at the plane");
+        //TC17: the ray is starting at the point that representing the plane (0 points)
+        assertNull(plane2.findIntsersections(new Ray(new Point(2,0,0), new Vector(-8,-8,0))), "wrong intersection - starts at the plane");
+
 
     }
 }
