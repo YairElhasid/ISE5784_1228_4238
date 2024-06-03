@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="polygon and plane intersection">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="find intersection - all done and checked" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,8 +58,9 @@
     "JUnit.All in ISE5784_1228_4238.executor": "Run",
     "JUnit.PlaneTest.testFindIntersections.executor": "Run",
     "JUnit.PolygonTest.testConstructor.executor": "Run",
-    "JUnit.PolygonTest.testFindIntersections.executor": "Debug",
+    "JUnit.PolygonTest.testFindIntersections.executor": "Run",
     "JUnit.SphereTest.testFindIntersections.executor": "Run",
+    "JUnit.TriangleTest.testFindIntersections.executor": "Run",
     "JUnit.TriangleTest.testGetNormal.executor": "Run",
     "JUnit.VectorTest.add.executor": "Run",
     "JUnit.VectorTest.dotProduct.executor": "Run",
@@ -226,7 +223,7 @@
       <workItem from="1717399803005" duration="176000" />
       <workItem from="1717403752781" duration="7614000" />
       <workItem from="1717416854464" duration="5000" />
-      <workItem from="1717437139219" duration="7786000" />
+      <workItem from="1717437139219" duration="8665000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -364,7 +361,23 @@
       <option name="project" value="LOCAL‎" />
       <updated>1717441685485</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL‎-00018" summary="find intersection - all done and checked">
+      <option name="closed" value="true" />
+      <created>1717445296624</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL‎-00018" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717445296624</updated>
+    </task>
+    <task id="LOCAL‎-00019" summary="find intersection - all done and checked">
+      <option name="closed" value="true" />
+      <created>1717445301170</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL‎-00019" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717445301170</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,7 +410,8 @@
     <MESSAGE value="find intersections - sphere and triangle tests done" />
     <MESSAGE value="fix the tube running time" />
     <MESSAGE value="polygon and plane intersection" />
-    <option name="LAST_COMMIT_MESSAGE" value="polygon and plane intersection" />
+    <MESSAGE value="find intersection - all done and checked" />
+    <option name="LAST_COMMIT_MESSAGE" value="find intersection - all done and checked" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
