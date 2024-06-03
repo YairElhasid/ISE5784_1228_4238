@@ -33,7 +33,7 @@ class SphereTest {
         assertNull(sphere2.findIntsersections(new Ray(new Point(8,8,8), new Vector(-2,4,3))), "wrong intersection, regular ray that not supposed to intersect the sphere");
 
         // TC02: Ray starts before and crosses the sphere (2 points)
-        assertEquals(List.of(new Point(2.44, 3.88, 3.88), new Point(4,7,7)), sphere2.findIntsersections(new Ray(new Point(1,1,1), new Vector(2,3,3))), "wrong intersection, regular ray");
+        assertEquals(List.of(new Point(2,5,5), new Point(4,7,7)), sphere2.findIntsersections(new Ray(new Point(1,4,4), new Vector(1,1,1))), "wrong intersection, regular ray");
 
         // TC03: Ray starts inside the sphere (1 point)
         assertEquals(List.of(new Point(4, 7, 7)), sphere2.findIntsersections(new Ray(new Point(2,5,5), new Vector(1,1,1))), "wrong intersection, regular ray on the sphere");

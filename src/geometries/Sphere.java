@@ -35,15 +35,19 @@ public class Sphere extends RadialGeometry{
         if (center.equals(head))
             return List.of(head.add(direction.scale(radius)));
         Vector u = center.subtract(head);
-        double tm = alignZero(u.dotProduct(direction));
-        double d = alignZero(Math.sqrt(u.lengthSquared()-tm*tm));
-        if (d>=radius) return null;
-        double th = alignZero(Math.sqrt(radius * radius- d * d));
+        double tm = alignZero(direction.dotProduct(u));
+        //if the ray is outside the sphere
+        if(tm < 0 && head.distance(center) >= radius)
+            return null;
+        double d = Math.sqrt(alignZero(u.lengthSquared() - tm * tm));
+        if (d >= radius)
+            return null;
+        double th = alignZero(Math.sqrt((radius * radius) - (d * d)));
         if(isZero(th))
             return null;
         if(tm <= th)
             return List.of(head.add(direction.scale(th + tm)));
-        return List.of(head.add(direction.scale(th - tm)), head.add(direction.scale(th + tm)));
+        return List.of(head.add(direction.scale(tm-th)), head.add(direction.scale(th + tm)));
     }
 
 }
