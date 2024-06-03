@@ -4,8 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import primitives.Double3;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
+
+import java.util.List;
 
 /**
  * Testing Polygons
@@ -17,7 +21,7 @@ public class PolygonTest {
     * assertEquals
     */
    private final double DELTA = 0.000001;
-
+   private Polygon p = new Polygon(new Point(0, 0, 1),new Point(1, 0, 0),new Point(0, 1, 0),new Point(-1, 1, 1));
    /** Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}. */
    @Test
    public void testConstructor() {
@@ -90,18 +94,20 @@ public class PolygonTest {
    @Test
    void testFindIntersections() {
       // ============ Equivalence Partitions Tests ==============
-      // TC00: the intersection point with the plane is inside the plane (1 point)
-
-      // TC01: the intersection point with the plane is outside the plane and parallel to edge (0 points)
-
-      // TC02: the intersection point with the plane is outside the plane and parallel to vertex (0 points)
+      // TC00: the intersection point with the plane is inside the polygon (1 point)
+      assertEquals(List.of(new Point(0.2,0.2,0.6)), p.findIntsersections(new Ray(new Point(1,1,1),new Vector(new Double3(-0.8,-0.8,-0.4)))), "");
+      // TC01: the intersection point with the plane is outside the polygon and parallel to edge (0 points)
+      assertNull(p.findIntsersections(new Ray(new Point(1,1,1),new Vector(new Double3(1,0,-1)))), "should be zero intersection points");
+      // TC02: the intersection point with the plane is outside the polygon and parallel to vertex (0 points)
+      assertNull(p.findIntsersections(new Ray(new Point(1,1,1),new Vector(new Double3(-1,2,-3)))), "should be zero intersection points");
 
       // =============== Boundary Values Tests ==================
-      // TC10: the intersection point with the plane is on edge of the plane (0 points)
+      // TC10: the intersection point with the plane is on edge of the polygon (0 points)
 
-      // TC11: the intersection point with the plane is on vertex of the plane (0 points)
+      // TC11: the intersection point with the plane is on vertex of the polygon (0 points)
 
-      // TC12: the intersection point with the plane is on continuation of an edge of the plane (0 points)
+      // TC12: the intersection point with the plane is on continuation of an edge of the polygon (0 points)
+      assertNull(p.findIntsersections(new Ray(new Point(1,1,1),new Vector(new Double3(-0.5,-0.5,0)))), "should be zero intersection points");
    }
 
 }
