@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="unit tests - all finished and working and documented">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="find intersections - sphere and triangle tests done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/PolygonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PolygonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -65,6 +60,7 @@
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;JUnit.All in ISE5784_1228_4238.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PolygonTest.testConstructor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TriangleTest.testGetNormal.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTest.add.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTest.dotProduct.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTest.executor&quot;: &quot;Debug&quot;,
@@ -93,7 +89,7 @@
       <recent name="C:\Users\yairy\Desktop\תכנות\java projects\מיניפ במלת\ISE5784_1228_4238\src\primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ISE5784_1228_4238">
+  <component name="RunManager" selected="JUnit.TriangleTest.testGetNormal">
     <configuration name="All in ISE5784_1228_4238" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1228_4238" />
       <option name="PACKAGE_NAME" value="" />
@@ -113,6 +109,22 @@
       <option name="PACKAGE_NAME" value="geometries" />
       <option name="MAIN_CLASS_NAME" value="geometries.PolygonTest" />
       <option name="METHOD_NAME" value="testConstructor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TriangleTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_1228_4238" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTest" />
+      <option name="METHOD_NAME" value="testGetNormal" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,29 +161,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VectorTest.dotProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_1228_4238" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="primitives.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.VectorTest" />
-      <option name="METHOD_NAME" value="dotProduct" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TriangleTest.testGetNormal" />
         <item itemvalue="JUnit.All in ISE5784_1228_4238" />
         <item itemvalue="JUnit.VectorTest" />
         <item itemvalue="JUnit.VectorTest.add" />
         <item itemvalue="JUnit.PolygonTest.testConstructor" />
-        <item itemvalue="JUnit.VectorTest.dotProduct" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +205,13 @@
       <workItem from="1716679460198" duration="437000" />
       <workItem from="1716738004159" duration="6000" />
       <workItem from="1716750794690" duration="8000" />
-      <workItem from="1716903282400" duration="4801000" />
+      <workItem from="1716903282400" duration="4858000" />
+      <workItem from="1717161053213" duration="2422000" />
+      <workItem from="1717314998155" duration="5507000" />
+      <workItem from="1717355452963" duration="4194000" />
+      <workItem from="1717360983119" duration="375000" />
+      <workItem from="1717399803005" duration="176000" />
+      <workItem from="1717403752781" duration="2583000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -283,7 +285,39 @@
       <option name="project" value="LOCAL‎" />
       <updated>1716679824775</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL‎-00010" summary="unit tests - intersection tests">
+      <option name="closed" value="true" />
+      <created>1716908617502</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL‎-00010" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1716908617502</updated>
+    </task>
+    <task id="LOCAL‎-00011" summary="find intersections - the interface and the signatures">
+      <option name="closed" value="true" />
+      <created>1717163307188</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL‎-00011" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717163307188</updated>
+    </task>
+    <task id="LOCAL‎-00012" summary="find intersections - sphere tests done">
+      <option name="closed" value="true" />
+      <created>1717333704302</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL‎-00012" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717333704302</updated>
+    </task>
+    <task id="LOCAL‎-00013" summary="find intersections - sphere and triangle tests done">
+      <option name="closed" value="true" />
+      <created>1717359735440</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL‎-00013" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717359735440</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +344,10 @@
     <MESSAGE value="a" />
     <MESSAGE value="unit tests - all finished and working" />
     <MESSAGE value="unit tests - all finished and working and documented" />
-    <option name="LAST_COMMIT_MESSAGE" value="unit tests - all finished and working and documented" />
+    <MESSAGE value="unit tests - intersection tests" />
+    <MESSAGE value="find intersections - the interface and the signatures" />
+    <MESSAGE value="find intersections - sphere tests done" />
+    <MESSAGE value="find intersections - sphere and triangle tests done" />
+    <option name="LAST_COMMIT_MESSAGE" value="find intersections - sphere and triangle tests done" />
   </component>
 </project>
