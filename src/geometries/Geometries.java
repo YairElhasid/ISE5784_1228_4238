@@ -43,7 +43,9 @@ public class Geometries implements Intersectable{
                     intersections = currentIntersections;
                 }
                 else{
-                    intersections.addAll(currentIntersections);
+                    for(Point intersection : currentIntersections){
+                        intersections.add(intersection);
+                    }
                 }
             }
         }

@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="find intersection sphere">
-      <change afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/geometries/GeometriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-    </list>
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="geometries all done" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +57,7 @@
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.All in ISE5784_1228_4238.executor": "Run",
     "JUnit.CylinderTest.executor": "Debug",
+    "JUnit.GeometriesTest.findIntsersections.executor": "Debug",
     "JUnit.PolygonTest.testConstructor.executor": "Run",
     "JUnit.SphereTest.testFindIntersections.executor": "Run",
     "JUnit.VectorTest.add.executor": "Run",
@@ -209,7 +205,7 @@
       <workItem from="1716406914842" duration="2540000" />
       <workItem from="1716557261838" duration="4074000" />
       <workItem from="1717402828414" duration="7656000" />
-      <workItem from="1717439813015" duration="5357000" />
+      <workItem from="1717439813015" duration="5768000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -283,7 +279,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1717441525247</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL‎-00010" summary="geometries all done">
+      <option name="closed" value="true" />
+      <created>1717448130431</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL‎-00010" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717448130431</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +313,8 @@
     <MESSAGE value="tests accomplished" />
     <MESSAGE value="tests and getNormals accomplished. need some checks on the error on 6 tests." />
     <MESSAGE value="find intersection sphere" />
-    <option name="LAST_COMMIT_MESSAGE" value="find intersection sphere" />
+    <MESSAGE value="geometries all done" />
+    <option name="LAST_COMMIT_MESSAGE" value="geometries all done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -318,6 +323,11 @@
           <url>file://$PROJECT_DIR$/src/geometries/Cylinder.java</url>
           <line>28</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/Geometries.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
