@@ -1,5 +1,8 @@
 package primitives;
 
+
+import static primitives.Util.isZero;
+
 /**
  * implement a ray
  * @author Sagiv Maoz and Yair Elhasid
@@ -31,6 +34,15 @@ public class Ray {
      */
     public Vector getDirection() {
         return direction;
+    }
+    /**
+     * general point getter (using scalar t)
+     * @param t - the scalar
+     * @return the point
+     */
+    public Point getPoint(double t) {
+        if(isZero(t)) return head;
+        return head.add(direction.scale(t));
     }
 
     @Override
