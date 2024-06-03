@@ -62,6 +62,6 @@ public class Plane implements Geometry{
         double t = nominator / denominator;
         // if the ray start on/after the plane
         if (t<0 || isZero(t)) return null;
-        return List.of(ray.getHead().add(ray.getDirection().scale(t)));
+        return List.of(ray.getPoint(t));
     }
 }

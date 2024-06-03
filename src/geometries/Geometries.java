@@ -37,15 +37,13 @@ public class Geometries implements Intersectable{
     public List<Point> findIntsersections(Ray ray){
         List<Point> intersections = null;
         for(Intersectable intersectable : intersectables){
-            List<Point> currentIntersections = intersectable.findIntsersections(ray);
+            var currentIntersections = intersectable.findIntsersections(ray);
             if(currentIntersections != null){
                 if(intersections == null){
-                    intersections = currentIntersections;
+                    intersections = new LinkedList<>(currentIntersections);
                 }
                 else{
-                    for(Point intersection : currentIntersections){
-                        intersections.add(intersection);
-                    }
+                    intersections.addAll(currentIntersections);
                 }
             }
         }
