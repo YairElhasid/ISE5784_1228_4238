@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="find intersections - sphere and triangle tests done">
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="fix the tube running time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +65,7 @@
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;JUnit.All in ISE5784_1228_4238.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PolygonTest.testConstructor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SphereTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TriangleTest.testGetNormal.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTest.add.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTest.dotProduct.executor&quot;: &quot;Run&quot;,
@@ -89,7 +95,7 @@
       <recent name="C:\Users\yairy\Desktop\תכנות\java projects\מיניפ במלת\ISE5784_1228_4238\src\primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TriangleTest.testGetNormal">
+  <component name="RunManager" selected="JUnit.SphereTest.testFindIntersections">
     <configuration name="All in ISE5784_1228_4238" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1228_4238" />
       <option name="PACKAGE_NAME" value="" />
@@ -98,7 +104,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolygonTest.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SphereTest.testFindIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1228_4238" />
       <extension name="coverage">
         <pattern>
@@ -107,8 +113,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.PolygonTest" />
-      <option name="METHOD_NAME" value="testConstructor" />
+      <option name="MAIN_CLASS_NAME" value="geometries.SphereTest" />
+      <option name="METHOD_NAME" value="testFindIntersections" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,11 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SphereTest.testFindIntersections" />
         <item itemvalue="JUnit.TriangleTest.testGetNormal" />
         <item itemvalue="JUnit.All in ISE5784_1228_4238" />
         <item itemvalue="JUnit.VectorTest" />
         <item itemvalue="JUnit.VectorTest.add" />
-        <item itemvalue="JUnit.PolygonTest.testConstructor" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +217,9 @@
       <workItem from="1717355452963" duration="4194000" />
       <workItem from="1717360983119" duration="375000" />
       <workItem from="1717399803005" duration="176000" />
-      <workItem from="1717403752781" duration="2583000" />
+      <workItem from="1717403752781" duration="7614000" />
+      <workItem from="1717416854464" duration="5000" />
+      <workItem from="1717437139219" duration="3657000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -317,7 +325,23 @@
       <option name="project" value="LOCAL‎" />
       <updated>1717359735440</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL‎-00014" summary="fix the tube running time">
+      <option name="closed" value="true" />
+      <created>1717407075993</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL‎-00014" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717407075993</updated>
+    </task>
+    <task id="LOCAL‎-00015" summary="fix the tube running time">
+      <option name="closed" value="true" />
+      <created>1717407122564</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL‎-00015" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717407122564</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,6 +372,7 @@
     <MESSAGE value="find intersections - the interface and the signatures" />
     <MESSAGE value="find intersections - sphere tests done" />
     <MESSAGE value="find intersections - sphere and triangle tests done" />
-    <option name="LAST_COMMIT_MESSAGE" value="find intersections - sphere and triangle tests done" />
+    <MESSAGE value="fix the tube running time" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the tube running time" />
   </component>
 </project>
