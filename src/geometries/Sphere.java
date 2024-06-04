@@ -33,7 +33,7 @@ public class Sphere extends RadialGeometry{
         Vector direction = ray.getDirection();
         // if the ray head is at the center of the sphere
         if (center.equals(head))
-            return List.of(head.add(direction.scale(radius)));
+            return List.of(ray.getPoint(radius));
         Vector u = center.subtract(head);
         double tm = alignZero(direction.dotProduct(u));
         //if the ray is outside the sphere
@@ -46,8 +46,8 @@ public class Sphere extends RadialGeometry{
         if(isZero(th))
             return null;
         if(tm <= th)
-            return List.of(head.add(direction.scale(th + tm)));
-        return List.of(head.add(direction.scale(tm-th)), head.add(direction.scale(th + tm)));
+            return List.of(ray.getPoint(th + tm));
+        return List.of(ray.getPoint(tm-th), ray.getPoint(th + tm));
     }
 
 }
