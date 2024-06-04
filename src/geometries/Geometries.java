@@ -38,14 +38,11 @@ public class Geometries implements Intersectable{
         List<Point> intersections = null;
         for(Intersectable intersectable : intersectables){
             var currentIntersections = intersectable.findIntsersections(ray);
-            if(currentIntersections != null){
-                if(intersections == null){
+            if(currentIntersections != null)
+                if(intersections == null)
                     intersections = new LinkedList<>(currentIntersections);
-                }
-                else{
+                else
                     intersections.addAll(currentIntersections);
-                }
-            }
         }
         return intersections;
     }

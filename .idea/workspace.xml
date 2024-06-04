@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="PRO3" />
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="PRO3">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,39 +55,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.All in ISE5784_1228_4238.executor": "Run",
-    "JUnit.GeometriesTest.executor": "Run",
-    "JUnit.PlaneTest.testFindIntersections.executor": "Run",
-    "JUnit.PolygonTest.testConstructor.executor": "Run",
-    "JUnit.PolygonTest.testFindIntersections.executor": "Run",
-    "JUnit.SphereTest.testFindIntersections.executor": "Run",
-    "JUnit.TriangleTest.testFindIntersections.executor": "Run",
-    "JUnit.TriangleTest.testGetNormal.executor": "Run",
-    "JUnit.VectorTest.add.executor": "Run",
-    "JUnit.VectorTest.dotProduct.executor": "Run",
-    "JUnit.VectorTest.executor": "Debug",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.All in ISE5784_1228_4238.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GeometriesTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlaneTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PolygonTest.testConstructor.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PolygonTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SphereTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TriangleTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TriangleTest.testGetNormal.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VectorTest.add.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VectorTest.dotProduct.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VectorTest.executor&quot;: &quot;Debug&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\yairy\Desktop\תכנות\java projects\מיניפ במלת\ISE5784_1228_4238\src\geometries" />
@@ -215,7 +219,8 @@
       <workItem from="1717399803005" duration="176000" />
       <workItem from="1717403752781" duration="7614000" />
       <workItem from="1717416854464" duration="5000" />
-      <workItem from="1717437139219" duration="11875000" />
+      <workItem from="1717437139219" duration="12013000" />
+      <workItem from="1717507496785" duration="873000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -385,7 +390,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1717452728243</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL‎-00022" summary="PRO3">
+      <option name="closed" value="true" />
+      <created>1717452940617</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL‎-00022" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717452940617</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,11 +438,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/geometries/Polygon.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/geometries/Plane.java</url>
           <line>51</line>
