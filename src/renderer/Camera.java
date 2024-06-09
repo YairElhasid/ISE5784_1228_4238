@@ -2,6 +2,10 @@ package renderer;
 
 import primitives.*;
 
+import java.util.MissingResourceException;
+
+import static primitives.Util.*;
+
 /**
  * class that implements camera
  * @author Sagiv Maoz and Yair Elhasid
@@ -71,6 +75,80 @@ public class Camera implements Cloneable{
      */
     public double getDistance() {
         return distance;
+    }
+
+    /**
+     * internal class for builder design pattern
+     * @author Sagiv Maoz and Yair Elhasid
+     */
+    public static class Builder{
+        private final Camera instance = new Camera();
+
+        /**
+         * set the location of the camera
+         * @param location - the new point
+         * @return - this builder - for concatenation
+         */
+        public Builder setLocation(Point location){
+            instance.location = location;
+            return this;
+        }
+
+        /**
+         * set the direction vectors of the camera (to and up)
+         * @param vTo - the to direction
+         * @param vUp - the up direction
+         * @return - this builder - for concatenation
+         */
+        public Builder setDirection(Vector vTo, Vector vUp){
+            if(!isZero(vTo.dotProduct(vUp)))
+                throw new IllegalArgumentException("vTo must be orthogonal with vUp");
+            instance.vTo = vTo.normalize();
+            instance.vUp = vUp.normalize();
+            return this;
+        }
+
+        /**
+         * set the size of the view plane
+         * @param width - the width of the view plane
+         * @param height - the height of the view plane
+         * @return - this builder - for concatenation
+         */
+        public Builder setVpSize(double width, double height){
+            if(!isZero(width) || !isZero(height) || width < 0 || height < 0)
+                throw new IllegalArgumentException("width and height must be greater than 0");
+            instance.width = width;
+            instance.height = height;
+            return this;
+        }
+
+        /**
+         * set the distance from the view plane
+         * @param distance - the distance from the view plane
+         * @return - this builder - for concatenation
+         */
+        public Builder setVpDistance(double distance){
+            if(!isZero(distance) || distance < 0)
+                throw new IllegalArgumentException("distance must be greater than 0");
+            instance.distance = distance;
+            return this;
+        }
+
+        /**
+         * return the final product of the builder and calculate the camera missing arguments
+         * @return - the final camera
+         */
+        public Camera build(){
+            final String className = "Camera", genarlMessege = "Missing camera argument";
+            if (instance.location == null) throw new MissingResourceException(genarlMessege,className,"location");
+            if (instance.vUp == null) throw new MissingResourceException(genarlMessege,className,"vUp");;
+            if (instance.vTo == null) throw new MissingResourceException(genarlMessege,className,"vTo");;
+            if (isZero(instance.width)) throw new MissingResourceException(genarlMessege,className,"width");;
+            if (isZero(instance.height)) throw new MissingResourceException(genarlMessege,className,"height");;
+            if (isZero(instance.distance)) throw new MissingResourceException(genarlMessege,className,"distance");;
+            instance.vRight = instance.vTo.crossProduct(instance.vUp).normalize();
+            return (Camera) instance.clone(); // Cloneable - get a full copy
+        }
     }
 
     /**
