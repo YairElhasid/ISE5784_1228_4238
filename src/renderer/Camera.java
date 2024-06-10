@@ -165,7 +165,9 @@ public class Camera implements Cloneable{
      * returns an instance of the Builder class - for the builder design pattern
      * @return - instance of the Builder class
      */
-    public static Builder getBuilder(){}
+    public static Builder getBuilder(){
+        return new Builder();
+    }
 
     /**
      * creates a ray from the camera point to the specified pixel
