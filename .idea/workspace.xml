@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="get point at ray - done">
-      <change afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="stage 4 here we come" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,6 +212,7 @@
       <workItem from="1717507037619" duration="388000" />
       <workItem from="1717508832312" duration="288000" />
       <workItem from="1717510168220" duration="1777000" />
+      <workItem from="1717676567785" duration="73000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -320,7 +318,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1717508870455</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL‎-00014" summary="stage 4 here we come">
+      <option name="closed" value="true" />
+      <created>1717676605849</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL‎-00014" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717676605849</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,7 +355,8 @@
     <MESSAGE value="geometries all done" />
     <MESSAGE value="geometries almost done" />
     <MESSAGE value="get point at ray - done" />
-    <option name="LAST_COMMIT_MESSAGE" value="get point at ray - done" />
+    <MESSAGE value="stage 4 here we come" />
+    <option name="LAST_COMMIT_MESSAGE" value="stage 4 here we come" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
