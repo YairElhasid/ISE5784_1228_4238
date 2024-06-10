@@ -1,4 +1,5 @@
 package renderer;
+import geometries.Sphere;
 import org.junit.jupiter.api.Test;
 
 import geometries.Geometry;
@@ -33,11 +34,22 @@ public class rendererGeometriesIntegrationTest {
         }
         return counter;
     }
-    /** test for sphere intersect*/
+    /** test sphere intersections*/
     @Test
     void testSphereIntersect(){
         Camera camera = Camera.getBuilder().setDirection(new Vector(0,0,1), new Vector(0,1,0)).setLocation(new Point(0,0,0)).setVpDistance(1).setVpSize(3,3).build();
-        assertEquals("");
+        // TC01: the sphere start after the view plane and has only two intersections
+        assertEquals(constructAndIntersect(camera,new Sphere(new Point(0,0,-3),1)),2,"wrong number of intersections in TC01");
+        // TC02: the sphere start before the camera and has nine intersections
+        assertEquals(constructAndIntersect(camera,new Sphere(new Point(0,0,-1),6)),9,"wrong number of intersections in TC02");
+        // TC03: the sphere start before the camera and doesn't have intersections
+        assertEquals(constructAndIntersect(camera,new Sphere(new Point(0,0,1),0.5)),0,"should has no intersections in TC03");
+        camera = Camera.getBuilder().setLocation(new Point(0,0,0.5)).build();
+        // TC04: the sphere start between the camera and the view plane and has 18 intersections
+        assertEquals(constructAndIntersect(camera,new Sphere(new Point(0,0,-2.5),2.5)),18,"wrong number of intersections in TC04");
+        // TC05: the sphere start between the camera and the view plane and has 10 intersections
+        assertEquals(constructAndIntersect(camera,new Sphere(new Point(0,0,-2),2)),10,"wrong number of intersections in TC05");
+
     }
 
 
