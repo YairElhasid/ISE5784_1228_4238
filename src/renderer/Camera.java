@@ -12,6 +12,8 @@ import static primitives.Util.*;
  */
 public class Camera implements Cloneable{
     private Point location;
+    //the center of the view plane:
+    private Point pc;
     private Vector vTo;
     private Vector vUp;
     private Vector vRight;
@@ -146,7 +148,10 @@ public class Camera implements Cloneable{
             if (isZero(instance.width)) throw new MissingResourceException(genarlMessege,className,"width");;
             if (isZero(instance.height)) throw new MissingResourceException(genarlMessege,className,"height");;
             if (isZero(instance.distance)) throw new MissingResourceException(genarlMessege,className,"distance");;
+            //set the vRight vector
             instance.vRight = instance.vTo.crossProduct(instance.vUp).normalize();
+            //set the center of the view plane point
+            instance.pc = instance.location.add(instance.vTo.scale(instance.distance));
             try{
                 return (Camera) instance.clone(); // Cloneable - get a full copy
             }
@@ -170,5 +175,7 @@ public class Camera implements Cloneable{
      * @param i - the index of the pixel in matrix coordinates [][j]
      * @return - the ray
      */
-    public Ray constructRay(int nX, int nY, int j, int i){}
+    public Ray constructRay(int nX, int nY, int j, int i){
+        Point center
+    }
 }

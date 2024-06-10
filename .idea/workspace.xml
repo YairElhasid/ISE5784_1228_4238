@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="camera - builder pattern and tests">
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="integration tests - private function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/rendererGeometriesIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/rendererGeometriesIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +224,8 @@
       <workItem from="1717677001691" duration="68000" />
       <workItem from="1717768875059" duration="2589000" />
       <workItem from="1717959900812" duration="4924000" />
-      <workItem from="1718015908482" duration="4000000" />
+      <workItem from="1718015908482" duration="4065000" />
+      <workItem from="1718025447695" duration="572000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -435,7 +435,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1717965265968</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL‎-00027" summary="integration tests - private function">
+      <option name="closed" value="true" />
+      <created>1718020780419</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL‎-00027" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1718020780419</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,6 +481,7 @@
     <MESSAGE value="PRO3 - fix" />
     <MESSAGE value="camera another methods" />
     <MESSAGE value="camera - builder pattern and tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="camera - builder pattern and tests" />
+    <MESSAGE value="integration tests - private function" />
+    <option name="LAST_COMMIT_MESSAGE" value="integration tests - private function" />
   </component>
 </project>
