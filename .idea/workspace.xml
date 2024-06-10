@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="camera another methods">
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="camera - builder pattern and tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/rendererGeometriesIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/rendererGeometriesIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -223,7 +224,8 @@
       <workItem from="1717655500479" duration="689000" />
       <workItem from="1717677001691" duration="68000" />
       <workItem from="1717768875059" duration="2589000" />
-      <workItem from="1717959900812" duration="4230000" />
+      <workItem from="1717959900812" duration="4924000" />
+      <workItem from="1718015908482" duration="4000000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -425,7 +427,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1717776182032</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL‎-00026" summary="camera - builder pattern and tests">
+      <option name="closed" value="true" />
+      <created>1717965265967</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL‎-00026" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1717965265968</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,6 +472,7 @@
     <MESSAGE value="PRO3" />
     <MESSAGE value="PRO3 - fix" />
     <MESSAGE value="camera another methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="camera another methods" />
+    <MESSAGE value="camera - builder pattern and tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="camera - builder pattern and tests" />
   </component>
 </project>

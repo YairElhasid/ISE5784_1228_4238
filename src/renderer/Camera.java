@@ -147,7 +147,12 @@ public class Camera implements Cloneable{
             if (isZero(instance.height)) throw new MissingResourceException(genarlMessege,className,"height");;
             if (isZero(instance.distance)) throw new MissingResourceException(genarlMessege,className,"distance");;
             instance.vRight = instance.vTo.crossProduct(instance.vUp).normalize();
-            return (Camera) instance.clone(); // Cloneable - get a full copy
+            try{
+                return (Camera) instance.clone(); // Cloneable - get a full copy
+            }
+            catch(CloneNotSupportedException e){
+                throw new RuntimeException("error: ", e);
+            }
         }
     }
 
