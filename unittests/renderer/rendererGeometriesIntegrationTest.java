@@ -1,15 +1,8 @@
 package renderer;
-import geometries.Plane;
-import geometries.Sphere;
-import geometries.Triangle;
+import geometries.*;
 import org.junit.jupiter.api.Test;
-
-import geometries.Geometry;
-import primitives.Point;
-import primitives.Vector;
-
+import primitives.*;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -63,7 +56,7 @@ public class rendererGeometriesIntegrationTest {
         // TC02: the plane is not to the view plane (9 points)
         assertEquals(9,constructAndIntersect(camera,new Plane(new Point(0,1,-2), new Point(1,-1,-2.5), new Point(-1,-1,-2.5))),"wrong number of intersections in Plane TC02" );
         // TC03: the plane is not to 3 of the rays (6 points)
-        assertEquals(6,constructAndIntersect(camera,new Plane(new Point(0,0,1), new Vector(0,1,-1))),"wrong number of intersections in Plane TC03" );
+        assertEquals(6,constructAndIntersect(camera,new Plane(new Point(0,1,0), new Point(0,0,-1), new Point(1,0,-1))),"wrong number of intersections in Plane TC03" );
 
     }
 
