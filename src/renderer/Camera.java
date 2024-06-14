@@ -117,7 +117,7 @@ public class Camera implements Cloneable{
          * @return - this builder - for concatenation
          */
         public Builder setVpSize(double width, double height){
-            if(!isZero(width) || !isZero(height) || width < 0 || height < 0)
+            if(isZero(width) || isZero(height) || width < 0 || height < 0)
                 throw new IllegalArgumentException("width and height must be greater than 0");
             instance.width = width;
             instance.height = height;
@@ -130,7 +130,7 @@ public class Camera implements Cloneable{
          * @return - this builder - for concatenation
          */
         public Builder setVpDistance(double distance){
-            if(!isZero(distance) || distance < 0)
+            if(isZero(distance) || distance < 0)
                 throw new IllegalArgumentException("distance must be greater than 0");
             instance.distance = distance;
             return this;
@@ -165,7 +165,9 @@ public class Camera implements Cloneable{
      * returns an instance of the Builder class - for the builder design pattern
      * @return - instance of the Builder class
      */
-    public static Builder getBuilder(){}
+    public static Builder getBuilder(){
+        return new Builder();
+    }
 
     /**
      * creates a ray from the camera point to the specified pixel
@@ -176,6 +178,12 @@ public class Camera implements Cloneable{
      * @return - the ray
      */
     public Ray constructRay(int nX, int nY, int j, int i){
-        Point center
+        Point Pij = pc;
+        double Rx = width/nX, Ry = height/nY;
+        double yi = -1 * (i - ((double)(nY - 1) / 2)) * Ry;
+        double xj = (j - ((double)(nX - 1) / 2)) * Rx;
+        if (xj != 0) Pij = Pij.add(vRight.scale(xj));
+        if (yi != 0) Pij = Pij.add(vUp.scale(yi));
+        return new Ray(location, Pij.subtract(location));
     }
 }
