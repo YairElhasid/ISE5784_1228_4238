@@ -20,6 +20,8 @@ public class Camera implements Cloneable{
     private double width = 0.0;
     private double height = 0.0;
     private double distance = 0.0;
+    private ImageWriter imageWriter;
+    private RayTracerBase rayTracer;
 
     private Camera(){};
 
@@ -137,6 +139,26 @@ public class Camera implements Cloneable{
         }
 
         /**
+         * set the imageWriter of the camera
+         * @param imageWriter- the imageWriter of the camera
+         * @return - this builder - for concatenation
+         */
+        public Builder setImageWriter(ImageWriter imageWriter){
+            instance.imageWriter = imageWriter;
+            return this;
+        }
+
+        /**
+         * set the rayTracer of the camera
+         * @param rayTracer- the rayTracer of the camera
+         * @return - this builder - for concatenation
+         */
+        public Builder setRayTracer(RayTracerBase rayTracer){
+            instance.rayTracer = rayTracer;
+            return this;
+        }
+
+        /**
          * return the final product of the builder and calculate the camera missing arguments
          * @return - the final camera
          */
@@ -148,6 +170,8 @@ public class Camera implements Cloneable{
             if (isZero(instance.width)) throw new MissingResourceException(genarlMessege,className,"width");;
             if (isZero(instance.height)) throw new MissingResourceException(genarlMessege,className,"height");;
             if (isZero(instance.distance)) throw new MissingResourceException(genarlMessege,className,"distance");;
+            if(instance.imageWriter == null) throw new MissingResourceException(genarlMessege,className,"imageWriter");
+            if(instance.rayTracer == null) throw new MissingResourceException(genarlMessege,className,"rayTracer");
             //set the vRight vector
             instance.vRight = instance.vTo.crossProduct(instance.vUp).normalize();
             //set the center of the view plane point
@@ -186,4 +210,33 @@ public class Camera implements Cloneable{
         if (yi != 0) Pij = Pij.add(vUp.scale(yi));
         return new Ray(location, Pij.subtract(location));
     }
+
+    /**
+     * paint the scene into the imagewriter's image
+     */
+    public void renderImage(){
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * paint a grid over the scene into the imagewriter's image
+     */
+    public void printGrid(int interval, primitives.Color color){
+        for(int i=0;i< imageWriter.getNx();i++) {
+            for(int j=0;j< imageWriter.getNy();j++){
+                if(i % 50 == 0 || j % 50 == 0){
+                    imageWriter.writePixel(i, j, color);
+                }
+            }
+        }
+    }
+
+
+    /**
+     * export the image to the images directory
+     */
+    public void writeToImage(){
+        imageWriter.writeToImage();
+    }
+
 }

@@ -1,6 +1,8 @@
 package primitives;
 
 
+import java.util.List;
+
 import static primitives.Util.isZero;
 
 /**
@@ -54,5 +56,23 @@ public class Ray {
     public boolean equals(Object obj) {
         if (obj == this) return true;
         return obj instanceof Ray other && head.equals(other.head) && direction.equals(other.direction);
+    }
+
+    /**
+     * calculate the closest point to the ray's head
+     * @param points list of the intersections points
+     * @return the closest point
+     */
+    public Point findClosestPoint(List<Point> points){
+        double minDistance = Double.MAX_VALUE;
+        Point result = null;
+        for(Point p : points){
+            double distance = p.distance(head);
+            if (distance<=minDistance) {
+                minDistance = distance;
+                result = p;
+            }
+        }
+        return result;
     }
 }

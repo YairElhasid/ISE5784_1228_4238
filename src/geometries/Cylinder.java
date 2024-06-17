@@ -7,6 +7,7 @@ import static primitives.Util.isZero;
 
 /**
  * the class implements cylinder shape
+ * @author Sagiv Maoz and Yair Elhasid
  */
 public class Cylinder extends Tube {
     final private double height;
