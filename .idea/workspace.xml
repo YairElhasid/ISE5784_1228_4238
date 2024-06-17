@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="imagewriter - images">
-      <change afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/RayTracerBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/SimpleRayTracer.java" afterDir="false" />
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="writing the final ray tracing methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/AmbientLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/RayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/RayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/ImageWriterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/ImageWriterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +98,9 @@
       <recent name="C:\Users\yairy\Desktop\תכנות\java projects\מיניפ במלת\ISE5784_1228_4238\src\geometries" />
       <recent name="C:\Users\yairy\Desktop\תכנות\java projects\מיניפ במלת\ISE5784_1228_4238\src" />
       <recent name="C:\Users\yairy\Desktop\תכנות\java projects\מיניפ במלת\ISE5784_1228_4238\src\primitives" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="renderer" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.ImageWriterTest.testImageWriter">
@@ -244,7 +239,9 @@
       <workItem from="1718371086164" duration="1706000" />
       <workItem from="1718564251396" duration="5086000" />
       <workItem from="1718570084162" duration="237000" />
-      <workItem from="1718619892855" duration="607000" />
+      <workItem from="1718619892855" duration="2011000" />
+      <workItem from="1718638672901" duration="66000" />
+      <workItem from="1718640823253" duration="1053000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -526,7 +523,23 @@
       <option name="project" value="LOCAL‎" />
       <updated>1718564417934</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL‎-00036" summary="RayTracer">
+      <option name="closed" value="true" />
+      <created>1718620710635</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL‎-00036" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1718620710635</updated>
+    </task>
+    <task id="LOCAL‎-00037" summary="writing the final ray tracing methods">
+      <option name="closed" value="true" />
+      <created>1718638710122</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL‎-00037" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1718638710122</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,8 +557,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="not working yet, but point half made" />
-    <MESSAGE value="not working yet, but finished" />
     <MESSAGE value="stage one accomplished!" />
     <MESSAGE value="unitests - plane final tests" />
     <MESSAGE value="unitests - cylinde fix" />
@@ -569,6 +580,8 @@
     <MESSAGE value="construct rays - done" />
     <MESSAGE value="imagewriter - class" />
     <MESSAGE value="imagewriter - images" />
-    <option name="LAST_COMMIT_MESSAGE" value="imagewriter - images" />
+    <MESSAGE value="RayTracer" />
+    <MESSAGE value="writing the final ray tracing methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="writing the final ray tracing methods" />
   </component>
 </project>
