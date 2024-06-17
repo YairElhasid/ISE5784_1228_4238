@@ -17,7 +17,7 @@ public class ImageWriterTest {
         for(int i=0;i< imageWriter.getNx();i++) {
             for(int j=0;j< imageWriter.getNy();j++){
                 imageWriter.writePixel(i,j, i % 50 == 0 || j % 50 == 0 ?
-                        new Color(100,150,50) : new Color(121,40,230));
+                        new Color(30,45,107) : new Color(76,82,56));
             }
         }
         imageWriter.writeToImage();

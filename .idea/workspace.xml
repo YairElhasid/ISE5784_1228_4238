@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="imagewriter - class">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="imagewriter - images">
+      <change afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/RayTracerBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/SimpleRayTracer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/AmbientLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/primitives/RayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/RayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/ImageWriterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/ImageWriterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +56,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2g8sZMvCIEOopKVqCsTCG7NbfFh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -61,6 +70,8 @@
     &quot;JUnit.All in ISE5784_1228_4238.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CameraTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.GeometriesTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ImageWriterTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ImageWriterTest.testImageWriter.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PlaneTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PolygonTest.testConstructor.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PolygonTest.testFindIntersections.executor&quot;: &quot;Run&quot;,
@@ -70,6 +81,7 @@
     &quot;JUnit.VectorTest.add.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTest.dotProduct.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VectorTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.renderer in ISE5784_1228_4238.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.rendererGeometriesIntegrationTest.executor&quot;: &quot;Run&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
@@ -96,7 +108,7 @@
       <recent name="C:\Users\yairy\Desktop\תכנות\java projects\מיניפ במלת\ISE5784_1228_4238\src\primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.rendererGeometriesIntegrationTest">
+  <component name="RunManager" selected="JUnit.ImageWriterTest.testImageWriter">
     <configuration name="All in ISE5784_1228_4238" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1228_4238" />
       <option name="PACKAGE_NAME" value="" />
@@ -105,7 +117,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CameraTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageWriterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1228_4238" />
       <extension name="coverage">
         <pattern>
@@ -114,39 +126,38 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.CameraTest" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GeometriesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ImageWriterTest.testImageWriter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1228_4238" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="geometries.*" />
+          <option name="PATTERN" value="renderer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.GeometriesTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TriangleTest.testFindIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_1228_4238" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTest" />
-      <option name="METHOD_NAME" value="testFindIntersections" />
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTest" />
+      <option name="METHOD_NAME" value="testImageWriter" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="renderer in ISE5784_1228_4238" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_1228_4238" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -168,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.rendererGeometriesIntegrationTest" />
-        <item itemvalue="JUnit.CameraTest" />
+        <item itemvalue="JUnit.ImageWriterTest.testImageWriter" />
+        <item itemvalue="JUnit.ImageWriterTest" />
+        <item itemvalue="JUnit.renderer in ISE5784_1228_4238" />
         <item itemvalue="JUnit.All in ISE5784_1228_4238" />
-        <item itemvalue="JUnit.GeometriesTest" />
-        <item itemvalue="JUnit.TriangleTest.testFindIntersections" />
+        <item itemvalue="JUnit.rendererGeometriesIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -231,6 +242,9 @@
       <workItem from="1718286508586" duration="7000" />
       <workItem from="1718355408568" duration="4000" />
       <workItem from="1718371086164" duration="1706000" />
+      <workItem from="1718564251396" duration="5086000" />
+      <workItem from="1718570084162" duration="237000" />
+      <workItem from="1718619892855" duration="607000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -496,7 +510,23 @@
       <option name="project" value="LOCAL‎" />
       <updated>1718371690896</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL‎-00034" summary="imagewriter - images">
+      <option name="closed" value="true" />
+      <created>1718564395621</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL‎-00034" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1718564395621</updated>
+    </task>
+    <task id="LOCAL‎-00035" summary="imagewriter - images">
+      <option name="closed" value="true" />
+      <created>1718564417934</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL‎-00035" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1718564417934</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +544,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial" />
     <MESSAGE value="not working yet, but point half made" />
     <MESSAGE value="not working yet, but finished" />
     <MESSAGE value="stage one accomplished!" />
@@ -539,6 +568,7 @@
     <MESSAGE value="integration tests - all done:)" />
     <MESSAGE value="construct rays - done" />
     <MESSAGE value="imagewriter - class" />
-    <option name="LAST_COMMIT_MESSAGE" value="imagewriter - class" />
+    <MESSAGE value="imagewriter - images" />
+    <option name="LAST_COMMIT_MESSAGE" value="imagewriter - images" />
   </component>
 </project>

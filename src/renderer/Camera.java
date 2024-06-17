@@ -20,6 +20,8 @@ public class Camera implements Cloneable{
     private double width = 0.0;
     private double height = 0.0;
     private double distance = 0.0;
+    private ImageWriter imageWriter;
+    private RayTracerBase rayTracer;
 
     private Camera(){};
 
