@@ -215,28 +215,40 @@ public class Camera implements Cloneable{
      * paint the scene into the imagewriter's image
      */
     public void renderImage(){
-        throw new UnsupportedOperationException();
+        int nX = imageWriter.getNx(), nY = imageWriter.getNy();
+        for (int i=0;i< nX;i++){
+            for(int j=0;j< nY;j++){
+                castRay(nX,nY,i,j);
+            }
+        }
+    }
+    /**
+     * cast ray from any pixel and paint it
+     */
+    private void castRay(int nX, int nY, int i, int j){
+        imageWriter.writePixel(i,j,rayTracer.traceRay(constructRay(nX,nY,j,i)));
     }
 
     /**
      * paint a grid over the scene into the imagewriter's image
+     * @param interval the distance between the grid lines
+     * @param color the given color of the grid
      */
     public void printGrid(int interval, primitives.Color color){
         for(int i=0;i< imageWriter.getNx();i++) {
             for(int j=0;j< imageWriter.getNy();j++){
-                if(i % 50 == 0 || j % 50 == 0){
+                if(i % interval == 0 || j % interval == 0){
                     imageWriter.writePixel(i, j, color);
                 }
             }
         }
     }
-
-
     /**
      * export the image to the images directory
      */
     public void writeToImage(){
         imageWriter.writeToImage();
     }
+
 
 }
