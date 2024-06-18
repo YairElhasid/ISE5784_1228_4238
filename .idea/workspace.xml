@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="writing the final ray tracing methods">
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="stage 5 all done:)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +242,7 @@
       <workItem from="1718570084162" duration="237000" />
       <workItem from="1718619892855" duration="2011000" />
       <workItem from="1718638672901" duration="66000" />
-      <workItem from="1718640823253" duration="1596000" />
+      <workItem from="1718640823253" duration="2012000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -556,7 +556,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1718642747258</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL‎-00040" summary="stage 5 all done:)">
+      <option name="closed" value="true" />
+      <created>1718643164148</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL‎-00040" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1718643164148</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +582,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="stage one accomplished!" />
     <MESSAGE value="unitests - plane final tests" />
     <MESSAGE value="unitests - cylinde fix" />
     <MESSAGE value="a" />
@@ -599,6 +606,7 @@
     <MESSAGE value="imagewriter - images" />
     <MESSAGE value="RayTracer" />
     <MESSAGE value="writing the final ray tracing methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="writing the final ray tracing methods" />
+    <MESSAGE value="stage 5 all done:)" />
+    <option name="LAST_COMMIT_MESSAGE" value="stage 5 all done:)" />
   </component>
 </project>
