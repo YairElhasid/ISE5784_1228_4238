@@ -34,7 +34,7 @@ public class Tube extends RadialGeometry {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
         return null;
     }
 

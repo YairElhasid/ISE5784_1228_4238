@@ -9,7 +9,7 @@ import java.util.List;
  * class that implements plane
  * @author Sagiv Maoz and Yair Elhasid
  */
-public class Plane implements Geometry{
+public class Plane extends Geometry{
     final private Point point;
     final private Vector normal;
 
@@ -48,7 +48,7 @@ public class Plane implements Geometry{
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
         double denominator = normal.dotProduct(ray.getDirection());
         double nominator = 0;
         if (isZero(denominator)) return null;
@@ -59,6 +59,6 @@ public class Plane implements Geometry{
         double t = nominator / denominator;
         // if the ray start on/after the plane
         if (t<0 || isZero(t)) return null;
-        return List.of(ray.getPoint(t));
+        return List.of(new GeoPoint(this, ray.getPoint(t)));
     }
 }

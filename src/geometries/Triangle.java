@@ -19,10 +19,10 @@ public class Triangle extends Polygon {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
-        List<Point> intersection = plane.findIntsersections(ray);
+    public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
+        List<GeoPoint> intersection = plane.findGeoIntsersectionsHelper(ray);
         if(intersection == null) return null;
-        Point p = intersection.getFirst();
+        Point p = intersection.getFirst().point;
         try{
             Vector lastIteration = (vertices.get(1).subtract(vertices.get(0))).crossProduct(vertices.get(0).subtract(p));
             for(int i = 1; i < 3; ++i) {
@@ -35,6 +35,6 @@ public class Triangle extends Polygon {
         catch(IllegalArgumentException exp) {
             return null;
         }
-        return intersection;
+        return List.of(new GeoPoint(this,p));
     }
 }
