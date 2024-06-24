@@ -218,7 +218,7 @@ public class Camera implements Cloneable{
         int nX = imageWriter.getNx(), nY = imageWriter.getNy();
         for (int i=0;i< nX;i++){
             for(int j=0;j< nY;j++){
-                castRay(nX,nY,i,j);
+                castRay(nX,nY,i, j);
             }
         }
     }
@@ -226,7 +226,7 @@ public class Camera implements Cloneable{
      * cast ray from any pixel and paint it
      */
     private void castRay(int nX, int nY, int i, int j){
-        imageWriter.writePixel(i,j,rayTracer.traceRay(constructRay(nX,nY,j,i)));
+        imageWriter.writePixel(i, j,rayTracer.traceRay(constructRay(nX,nY,j,i)));
     }
 
     /**

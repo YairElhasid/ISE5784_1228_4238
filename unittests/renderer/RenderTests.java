@@ -64,32 +64,32 @@ public class RenderTests {
                       .setEmission(new Color(BLUE)));
       scene.setAmbientLight(new AmbientLight(new Color(WHITE), new Double3(0.2, 0.2, 0.2))); //
 
-      camera
-              .setImageWriter(new ImageWriter("color render test", 1000, 1000))
-              .build()
-              .renderImage()
-              .printGrid(100, new Color(WHITE))
-              .writeToImage();
+      Camera actualCamera =camera
+              .setImageWriter(new ImageWriter("two colors test", 1000, 1000))
+              .build();
+      actualCamera.renderImage();
+      actualCamera.printGrid(100, new Color(WHITE));
+      actualCamera.writeToImage();
    }
 
-   /** Test for XML based scene - for bonus */
-   @Test
-   public void basicRenderXml() {
+   //** Test for XML based scene - for bonus */
+   //@Test
+   //public void basicRenderXml() {
       // enter XML file name and parse from XML file into scene object
       // using the code you added in appropriate packages
       // ...
       // NB: unit tests is not the correct place to put XML parsing code
 
-      camera
-              .setImageWriter(new ImageWriter("xml render test", 1000, 1000))
-              .build()
-              .renderImage()
-              .printGrid(100, new Color(YELLOW))
-              .writeToImage();
-   }
-}
+    //  camera
+      //        .setImageWriter(new ImageWriter("xml render test", 1000, 1000))
+        //      .build()
+          //    .renderImage()
+            //  .printGrid(100, new Color(YELLOW))
+              //.writeToImage();
+   //}
+//}
 
-   /** Test for XML based scene - for bonus */
+  // /** Test for XML based scene - for bonus */
    //@Test
    //public void basicRenderXml() {
    // enter XML file name and parse from XML file into scene object
