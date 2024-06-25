@@ -204,10 +204,10 @@ public class Camera implements Cloneable{
     public Ray constructRay(int nX, int nY, int j, int i){
         Point Pij = pc;
         double Rx = width/nX, Ry = height/nY;
-        double yi = -1 * (i - ((double)(nY - 1) / 2)) * Ry;
+        double yi = -(i - ((double)(nY - 1) / 2)) * Ry;
         double xj = (j - ((double)(nX - 1) / 2)) * Rx;
-        if (xj != 0) Pij = Pij.add(vRight.scale(xj));
-        if (yi != 0) Pij = Pij.add(vUp.scale(yi));
+        if (!isZero(xj)) Pij = Pij.add(vRight.scale(xj));
+        if (!isZero(yi)) Pij = Pij.add(vUp.scale(yi));
         return new Ray(location, Pij.subtract(location));
     }
 
@@ -216,17 +216,17 @@ public class Camera implements Cloneable{
      */
     public void renderImage(){
         int nX = imageWriter.getNx(), nY = imageWriter.getNy();
-        for (int i=0;i< nX;i++){
-            for(int j=0;j< nY;j++){
-                castRay(nX,nY,i, j);
+        for (int i=0;i< nY;i++){
+            for(int j=0;j< nX;j++){
+                castRay(nX,nY,j,i);
             }
         }
     }
     /**
      * cast ray from any pixel and paint it
      */
-    private void castRay(int nX, int nY, int i, int j){
-        imageWriter.writePixel(i, j,rayTracer.traceRay(constructRay(nX,nY,j,i)));
+    private void castRay(int nX, int nY, int j, int i){
+        imageWriter.writePixel(j, i,rayTracer.traceRay(constructRay(nX,nY,j, i)));
     }
 
     /**
@@ -235,10 +235,10 @@ public class Camera implements Cloneable{
      * @param color the given color of the grid
      */
     public void printGrid(int interval, primitives.Color color){
-        for(int i=0;i< imageWriter.getNx();i++) {
-            for(int j=0;j< imageWriter.getNy();j++){
+        for(int j=0;j< imageWriter.getNx();j++) {
+            for(int i=0;i< imageWriter.getNy();i++){
                 if(i % interval == 0 || j % interval == 0){
-                    imageWriter.writePixel(i, j, color);
+                    imageWriter.writePixel(j, i, color);
                 }
             }
         }

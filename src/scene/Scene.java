@@ -3,6 +3,10 @@ package scene;
 
 import geometries.Geometries;
 import lighting.AmbientLight;
+import lighting.LightSource;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * the class implements the entire scene (PDS class)
@@ -26,10 +30,13 @@ public class Scene {
     public AmbientLight ambientLight = AmbientLight.NONE;
 
     /**
-     * the geometries light color of the scene
+     * the geometries of the scene
      */
     public Geometries geometries = new Geometries();
-
+    /**
+     * source lights of the scene
+     */
+    public List<LightSource> lights = new LinkedList<>();
     /**
      * name constructor
      * @param name - the name if the scene
@@ -65,6 +72,16 @@ public class Scene {
      */
     public Scene setGeometries(Geometries geometries){
         this.geometries = geometries;
+        return this;
+    }
+
+    /**
+     * setter for the lights
+     * @param lights - new lights
+     * @return - the scene for concatenation
+     */
+    public Scene setGeometries(List<LightSource> lights){
+        this.lights = lights;
         return this;
     }
 
