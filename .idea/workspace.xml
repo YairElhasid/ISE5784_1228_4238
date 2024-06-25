@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="geopoint done">
+      <change afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/Light.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +68,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.All in ISE5784_1228_4238.executor": "Debug",
+    "JUnit.All in ISE5784_1228_4238.executor": "Run",
     "JUnit.CameraTest.executor": "Run",
     "JUnit.GeometriesTest.executor": "Run",
     "JUnit.ImageWriterTest.executor": "Run",
@@ -78,6 +85,7 @@
     "JUnit.VectorTest.add.executor": "Run",
     "JUnit.VectorTest.dotProduct.executor": "Run",
     "JUnit.VectorTest.executor": "Debug",
+    "JUnit.lighting in ISE5784_1228_4238.executor": "Run",
     "JUnit.primitives in ISE5784_1228_4238.executor": "Run",
     "JUnit.renderer in ISE5784_1228_4238.executor": "Run",
     "JUnit.rendererGeometriesIntegrationTest.executor": "Run",
@@ -101,6 +109,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sagiv\OneDrive\שולחן העבודה\minip\mahat\ISE5784_1228_4238\unittests\lighting" />
       <recent name="C:\Users\sagiv\OneDrive\שולחן העבודה\minip\mahat\ISE5784_1228_4238\unittests\renderer" />
       <recent name="C:\Users\yairy\Desktop\תכנות\java projects\מיניפ במלת\ISE5784_1228_4238\src\geometries" />
       <recent name="C:\Users\yairy\Desktop\תכנות\java projects\מיניפ במלת\ISE5784_1228_4238\src" />
@@ -110,7 +119,7 @@
       <recent name="renderer" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RenderTests.renderMultiColorTest">
+  <component name="RunManager" selected="JUnit.All in ISE5784_1228_4238">
     <configuration name="All in ISE5784_1228_4238" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1228_4238" />
       <option name="PACKAGE_NAME" value="" />
@@ -150,6 +159,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="lighting in ISE5784_1228_4238" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5784_1228_4238" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lighting.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lighting" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="renderer in ISE5784_1228_4238" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1228_4238" />
       <extension name="coverage">
@@ -164,28 +187,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="rendererGeometriesIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5784_1228_4238" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.rendererGeometriesIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RenderTests.renderMultiColorTest" />
         <item itemvalue="JUnit.All in ISE5784_1228_4238" />
+        <item itemvalue="JUnit.lighting in ISE5784_1228_4238" />
+        <item itemvalue="JUnit.RenderTests.renderMultiColorTest" />
         <item itemvalue="JUnit.RayTest" />
         <item itemvalue="JUnit.renderer in ISE5784_1228_4238" />
-        <item itemvalue="JUnit.rendererGeometriesIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -250,7 +258,8 @@
       <workItem from="1718638672901" duration="66000" />
       <workItem from="1718640823253" duration="2012000" />
       <workItem from="1718717548258" duration="2707000" />
-      <workItem from="1719241697579" duration="11392000" />
+      <workItem from="1719241697579" duration="11423000" />
+      <workItem from="1719321663070" duration="5976000" />
     </task>
     <task id="LOCAL‎-00001" summary="initial">
       <option name="closed" value="true" />
@@ -604,7 +613,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1719254001928</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL‎-00045" summary="geopoint done">
+      <option name="closed" value="true" />
+      <created>1719254043952</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL‎-00045" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1719254043952</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -8,4 +8,25 @@ import primitives.*;
  */
 public class DirectionalLight extends Light implements LightSource {
     private Vector direction;
+
+    /**
+     * parameters constructor
+     * @param color - the intensity
+     * @param direction - the direction
+     */
+    public DirectionalLight(primitives.Color color, Vector direction) {
+        super(color);
+        this.direction = direction;
+    }
+
+
+    @Override
+    public Color getIntensity(Point p) {
+        return intensity;
+    }
+
+    @Override
+    public Vector getL(Point p) {
+        return direction;
+    }
 }

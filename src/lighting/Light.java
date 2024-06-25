@@ -5,6 +5,7 @@ package lighting;
  * @author Sagiv Maoz and Yair Elhasid
  */
 abstract class Light {
+
     protected primitives.Color intensity;
 
     /**
