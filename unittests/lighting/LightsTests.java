@@ -121,7 +121,7 @@ public class LightsTests {
    @Test
    public void sphereSpot() {
       scene1.geometries.add(sphere);
-      scene1.lights.add(new SpotLight(sphereLightPosition, sphereLightColor, sphereLightDirection)
+      scene1.lights.add(new SpotLight(sphereLightPosition, sphereLightColor, sphereLightDirection, 10)
          .setKL(0.001).setKQ(0.0001));
 
       Camera actualCamera =camera1
@@ -174,8 +174,22 @@ public class LightsTests {
       actualCamera.renderImage();
       actualCamera.writeToImage();
 
+   }
 
-
+   /** Produce a picture of a sphere lighted by a point light */
+   @Test
+   public void spectacularTest() {
+      scene1.geometries.add(sphere);
+      scene1.lights.add(new DirectionalLight(new Color(890, 348, 290), new Vector(-1, -1, 0.5)));
+      scene1.lights.add(new PointLight( sphereLightPosition, new Color(400, 0, 0))
+              .setKL(0.001).setKQ(0.0002));
+      scene1.lights.add(new SpotLight(sphereLightPosition, new Color(5,1000,200), sphereLightDirection, 10)
+              .setKL(0.001).setKQ(0.0001));
+      Camera actualCamera =camera1
+              .setImageWriter(new ImageWriter("amazingImage", 500, 500))
+              .build();
+      actualCamera.renderImage();
+      actualCamera.writeToImage();
    }
 
    /** Produce a picture of a sphere lighted by a narrow spotlight */
