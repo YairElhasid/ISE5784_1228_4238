@@ -57,7 +57,8 @@ public class SimpleRayTracer extends RayTracerBase {
 
     private Double3 calcSpecular(primitives.Material mat, Vector n, Vector l, double nl, Vector v) {
         Vector r = l.subtract(n.scale(2 * nl));
-        return mat.kS.scale(Math.pow(v.scale(-1).dotProduct(r), mat.nShininess));
+        double mnr = v.scale(-1).dotProduct(r);
+        return mat.kS.scale(Math.pow(alignZero(mnr) > 0 ? mnr: 0, mat.nShininess));
     }
 
     private primitives.Color calcLocalEffects(GeoPoint gp, Ray ray) {
@@ -73,9 +74,9 @@ public class SimpleRayTracer extends RayTracerBase {
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0 && unshaded(gp, l,n, nl, lightSource)) { // sign(nl) == sing(nv) or if the point is shaded
                 Color iL = lightSource.getIntensity(gp.point);
-                color = color.add(
-                        iL.scale(calcDiffusive(material, Math.abs(nl))
-                                .add(calcSpecular(material, n, l, nl, v))));
+                Double3 x = calcDiffusive(material, Math.abs(nl)), y = calcSpecular(material, n, l, nl, v);
+                color = color.add(iL.scale(
+                        x.add(y)));
 
             }
 
