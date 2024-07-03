@@ -1,13 +1,12 @@
 package renderer;
 
 import geometries.Intersectable.GeoPoint;
+import lighting.DirectionalLight;
 import lighting.LightSource;
 import primitives.*;
 import primitives.Ray;
 import scene.Scene;
-
 import java.util.List;
-
 import static primitives.Util.alignZero;
 
 /**
@@ -15,6 +14,11 @@ import static primitives.Util.alignZero;
  * @author Sagiv Maoz and Yair Elhasid
  */
 public class SimpleRayTracer extends RayTracerBase {
+
+    /**
+     * constant for moving the point on a geometry in the direction of the normal
+     */
+    private static final double EPS = 0.1;
 
     /**
      * scene builder
@@ -67,7 +71,7 @@ public class SimpleRayTracer extends RayTracerBase {
         for (LightSource lightSource : scene.lights) {
             Vector l = lightSource.getL(gp.point).normalize();
             double nl = alignZero(n.dotProduct(l));
-            if (nl * nv > 0) { // sign(nl) == sing(nv)
+            if (nl * nv > 0 && unshaded(gp, l,n, nl, lightSource)) { // sign(nl) == sing(nv) or if the point is shaded
                 Color iL = lightSource.getIntensity(gp.point);
                 color = color.add(
                         iL.scale(calcDiffusive(material, Math.abs(nl))
@@ -80,4 +84,26 @@ public class SimpleRayTracer extends RayTracerBase {
         return color;
 
     }
+
+    /**
+     * indicate if some other geometry is shading our point
+     * @param gp  the point
+     * @param l the vector from the light source to the point
+     * @param n the normal vector for this geometry
+     * @return if some other geometry is shading our point or not
+     */
+
+    private boolean unshaded(GeoPoint gp , Vector l, Vector n, double nl, LightSource lightSource) {
+        Vector lightDirection = l.scale(-1); // from point to light source on k
+
+        Vector epsVector = n.scale(nl > 0 ? -EPS : EPS);
+        Point point = gp.point.add(epsVector);
+
+        Ray ray = new Ray(point, lightDirection);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntsersections(ray, lightSource.getDistance(gp.point));
+        return intersections == null;
+
+    }
+
+
 }
