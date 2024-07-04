@@ -91,12 +91,12 @@ public class ShadowTests {
       scene.geometries.add(
                            new Triangle(new Point(-150, -150, -115), new Point(150, -150, -135),
                                         new Point(75, 75, -150)) //
-                              .setMaterial(new Material().setKS(0.8).setKS(60)), //
+                              .setMaterial(new Material().setKS(0.8).setNShininess(60)), //
                            new Triangle(new Point(-150, -150, -115), new Point(-70, 70, -140), new Point(75, 75, -150)) //
-                              .setMaterial(new Material().setKS(0.8).setKS(60)), //
+                              .setMaterial(new Material().setKS(0.8).setNShininess(60)), //
                            new Sphere(new Point(0, 0, -11), 30d) //
                               .setEmission(new Color(BLUE)) //
-                              .setMaterial(new Material().setKD(0.5).setKS(0.5).setKS(30)) //
+                              .setMaterial(new Material().setKD(0.5).setKS(0.5).setNShininess(30)) //
       );
       scene.setAmbientLight(new AmbientLight(new Color(WHITE), 0.15));
       scene.lights.add(

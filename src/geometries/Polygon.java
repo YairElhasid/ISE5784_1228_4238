@@ -91,8 +91,8 @@ public class Polygon extends Geometry {
       Point p = intersection.getFirst().point;
       try{
          Vector lastIteration = (vertices.get(1).subtract(vertices.get(0))).crossProduct(vertices.get(0).subtract(p));
-         for(int i = 1; i < 3; ++i) {
-            Vector currentIteration = (vertices.get((i + 1) % 3).subtract(vertices.get(i))).crossProduct(vertices.get(i).subtract(p));
+         for(int i = 1; i < vertices.size(); ++i) {
+            Vector currentIteration = (vertices.get((i + 1) % vertices.size()).subtract(vertices.get(i))).crossProduct(vertices.get(i).subtract(p));
             if (lastIteration.dotProduct(currentIteration) < 0) return null;
             lastIteration = currentIteration;
          }

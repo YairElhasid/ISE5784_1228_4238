@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="shading all done exept testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/PolygonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PolygonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/lighting/ShadowTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/lighting/ShadowTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -267,15 +271,9 @@
       <workItem from="1719860134139" duration="100000" />
       <workItem from="1720005509368" duration="380000" />
       <workItem from="1720028630242" duration="6792000" />
-      <workItem from="1720035841186" duration="4112000" />
-    </task>
-    <task id="LOCAL‎-00001" summary="initial">
-      <option name="closed" value="true" />
-      <created>1715092517919</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL‎-00001" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1715092517919</updated>
+      <workItem from="1720035841186" duration="4160000" />
+      <workItem from="1720047752816" duration="543000" />
+      <workItem from="1720102686713" duration="3652000" />
     </task>
     <task id="LOCAL‎-00002" summary="not working yet, but point half made">
       <option name="closed" value="true" />
@@ -661,7 +659,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1720035336003</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL‎-00050" summary="shading all done exept testing">
+      <option name="closed" value="true" />
+      <created>1720044038437</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL‎-00050" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1720044038437</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -710,9 +716,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/renderer/SimpleRayTracer.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/unittests/geometries/PolygonTest.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unittests/geometries/PolygonTest.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
