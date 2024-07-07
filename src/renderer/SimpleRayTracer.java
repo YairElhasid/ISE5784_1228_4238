@@ -16,9 +16,18 @@ import static primitives.Util.alignZero;
 public class SimpleRayTracer extends RayTracerBase {
 
     /**
+     * when to stop the recursion of the reflection and transparency
+     */
+    private static final int MAX_CALC_COLOR_LEVEL = 10;
+    /**
+     * when to stop the recursion of the reflection and transparency
+     */
+    private static final double MIN_CALC_COLOR_K = 0.001;
+
+    /**
      * constant for moving the point on a geometry in the direction of the normal
      */
-    private static final double EPS = 0.1;
+    private static final double EPS = 0.01;
 
     /**
      * scene builder
@@ -42,8 +51,30 @@ public class SimpleRayTracer extends RayTracerBase {
         return calcColor(ray.findClosestGeoPoint(intersections), ray);
     }
 
+    private Ray getReflectionRay(Ray ray,GeoPoint gp){
+        Point p = gp.point;
+        Vector n = gp.geometry.getNormal(p);
+        return new Ray(p.add(n.dotProduct(ray.getDirection()) > 0 ? n.scale(EPS) : n.scale(-EPS)), ray.getDirection());
+    }
+
+    private Ray getTrancparencyRay(Ray ray, GeoPoint gp){
+        Point p = gp.point;
+        Vector n = gp.geometry.getNormal(p);
+        Vector d = ray.getDirection();
+        return new Ray(p.add(n.dotProduct(d) > 0 ? n.scale(-EPS) : n.scale(EPS)), d.subtract(n.scale(-2).scale(n.dotProduct(d))));
+    }
+
     /**
-     * return the color of a intersection point
+     * calculates the first arguments we need to add before we call the recursion
+     * @param gp the geo point of intersection
+     * @param ray the ray of intersection
+     * @return the final color of the pixel
+     */
+    private Color calcColor(GeoPoint gp, Ray ray)
+
+
+    /**
+     * return the color of a intersection point - recursive method
      */
     private primitives.Color calcColor(GeoPoint gp, Ray ray) {
         primitives.Color res = primitives.Color.BLACK;
