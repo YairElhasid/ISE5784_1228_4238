@@ -72,7 +72,7 @@ public class SimpleRayTracer extends RayTracerBase {
         Point p = gp.point;
         Vector n = gp.geometry.getNormal(p);
         Vector d = ray.getDirection();
-        return new Ray(p.add(n.dotProduct(d) > 0 ? n.scale(-EPS) : n.scale(EPS)), d.subtract(n.scale(-2).scale(n.dotProduct(d))));
+        return new Ray(p.add(n.dotProduct(d) > 0 ? n.scale(-EPS) : n.scale(EPS)), d.subtract(n.scale(2).scale(n.dotProduct(d))));
     }
 
     /**
@@ -96,10 +96,25 @@ public class SimpleRayTracer extends RayTracerBase {
 
     }
 
+    /**
+     * calculates the diffusive part in the phong model
+     * @param mat material
+     * @param absnl |n * l|
+     * @return the diffusive part
+     */
     private Double3 calcDiffusive(primitives.Material mat, double absnl) {
         return mat.kD.scale(absnl);
     }
 
+    /**
+     * calculates the specular part in the phong model
+     * @param mat
+     * @param n
+     * @param l
+     * @param nl
+     * @param v
+     * @return
+     */
     private Double3 calcSpecular(primitives.Material mat, Vector n, Vector l, double nl, Vector v) {
         Vector r = l.subtract(n.scale(2 * nl));
         double mnr = v.scale(-1).dotProduct(r);
@@ -138,7 +153,7 @@ public class SimpleRayTracer extends RayTracerBase {
 
     private Color calcGlobalEffect(Ray ray, Double3 kx, int level, Double3 k) {
         Double3 kkx = kx.product(k);
-        if (kkx.lowerThan(MIN_CALC_COLOR_K)) return Color.BLACK;
+        if (kx.lowerThan(MIN_CALC_COLOR_K)) return Color.BLACK;
         GeoPoint gp = findClosestIntersection(ray);
         return (gp == null ? scene.background : calcColor(gp, ray, level - 1, kkx))
                 .scale(kx);
@@ -162,7 +177,7 @@ public class SimpleRayTracer extends RayTracerBase {
         Ray ray = new Ray(point, lightDirection);
         List<GeoPoint> intersections = scene.geometries.findGeoIntsersections(ray, lightSource.getDistance(gp.point));
         if(intersections == null){
-            return false;
+            return true;
         }
         for(GeoPoint intersection : intersections) {
             if (intersection.geometry.getMaterial().kT == Double3.ZERO)
