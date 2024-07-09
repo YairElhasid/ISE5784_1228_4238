@@ -57,8 +57,8 @@ public class SimpleRayTracer extends RayTracerBase{
             if (nl *nv> 0) { // sign(nl) == sing(nv)
                 Color iL = lightSource.getIntensity(gp.point);
                 color = color.add(
-                        iL.scale(calcDiffusive(mat, nl)
-                                .add(calcSpecular(mat, n, 1, nl, v))));
+                        iL.scale(calcDiffusive(material, nl)
+                                .add(calcSpecular(material, n, 1, nl, v))));
 
             }
 
