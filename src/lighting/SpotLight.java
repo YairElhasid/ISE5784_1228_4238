@@ -70,15 +70,13 @@ public class SpotLight extends PointLight{
 
     @Override
     public Color getIntensity(Point p) {
-        double denominator = getDenominator(p);
+        primitives.Color point_result = super.getIntensity(p); //DRY
         double cosAngle = direction.normalize().dotProduct(getL(p).normalize());
         if(isZero(cosAngle) || cosAngle < 0){
             return primitives.Color.BLACK;
         }
-        if(isZero(denominator)){
-            throw new IllegalArgumentException("denominator cannot be zero");
-        }
-        return intensity.scale(Math.pow(cosAngle, kN) / denominator);
+
+        return point_result.scale(Math.pow(cosAngle, kN));
     }
 
 

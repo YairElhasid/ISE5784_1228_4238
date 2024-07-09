@@ -10,6 +10,12 @@ import static primitives.Util.isZero;
  * @author Sagiv Maoz and Yair Elhasid
  */
 public class Ray {
+
+    /**
+     * constant for moving the point on a geometry in the direction of the normal
+     */
+    private static final double EPS = 0.01;
+
     final private Point head;
     final private Vector direction;
 
@@ -21,6 +27,16 @@ public class Ray {
     public Ray(Point head, Vector direction) {
         this.head = head;
         this.direction = direction.normalize();
+    }
+
+    /**
+     * full constructor that get a normal for moving in his direction
+     * @param head - the head point
+     * @param direction - the direction vector
+     */
+    public Ray(Point head, Vector normal, Vector direction) {
+        this.head = head.add(normal.scale(EPS));
+        this.direction = direction;
     }
 
     /**
