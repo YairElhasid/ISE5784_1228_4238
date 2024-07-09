@@ -22,6 +22,8 @@ public class PolygonTest {
     */
    private final double DELTA = 0.000001;
    private Polygon p = new Polygon(new Point(0, 0, 1),new Point(1, 0, 0),new Point(0, 1, 0),new Point(-1, 1, 1));
+   private final Polygon p2 = new Polygon(new Point(1,1,2), new Point(1, -1, 2),new Point(-1,-1,2),  new Point(-1,1,2));
+
    /** Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}. */
    @Test
    public void testConstructor() {
@@ -109,5 +111,22 @@ public class PolygonTest {
       // TC12: the intersection point with the plane is on continuation of an edge of the polygon (0 points)
       assertNull(p.findIntsersections(new Ray(new Point(0.5,-1,0.5),new Vector(new Double3(0,1,0)))), "should be zero intersection points when the intersection point with the plane is on continuation of an edge of the polygon");
    }
+
+   /** Test method for {@link geometries.Polygon#findGeoIntsersectionsHelper(Ray, double)}. */
+   @Test
+   void testFindIntersectionsDistance() {
+      // ============ Equivalence Partitions Tests ==============
+      // TC00: the intersection point is before the distance
+      assertEquals(List.of(new Intersectable.GeoPoint(p2, new Point(0, 0, 2))), p2.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0,1)), 3), "incorrect intersection with bounded distance: 3");
+
+      // TC01: the intersection point is after the distance
+      assertNull(p2.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0, 1)), 1), "incorrect intersection with bounded distance: 1");
+
+      // =============== Boundary Values Tests ==================
+      // TC10: the intersection point is on the distance
+      assertEquals(List.of(new Intersectable.GeoPoint(p2, new Point(0, 0, 2))), p2.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0,1)), 2), "incorrect intersection with bounded distance: 2");
+
+   }
+
 
 }

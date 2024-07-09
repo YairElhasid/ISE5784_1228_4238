@@ -11,6 +11,8 @@ import static primitives.Util.isZero;
 public class SpotLight extends PointLight{
 
     private Vector direction;
+    //for the bonus of narrowed beam - the bigger, the narrowed
+    private double kN = 1;
 
     /**
      * parameters constructor
@@ -20,6 +22,20 @@ public class SpotLight extends PointLight{
      */
     public SpotLight(Point position, primitives.Color color, Vector direction) {
         super(position, color);
+        this.direction = direction;
+    }
+
+    /**
+     * parameters constructor with the narrowed beam parameter
+     * @param position - the position
+     * @param color - the intensity
+     * @param direction - the direction
+     * @param kN - the direction
+     */
+    public SpotLight(Point position, primitives.Color color, Vector direction, double kN ) {
+        super(position, color);
+        if(kN < 0 || isZero(kN)) throw new IllegalArgumentException("kN must be greater than zero");
+        this.kN = kN;
         this.direction = direction;
     }
 
@@ -41,17 +57,26 @@ public class SpotLight extends PointLight{
         return this;
     }
 
+    /**
+     * set the kN
+     * @param kN - the new kN
+     * @return - this Spot Light - for concatenation
+     */
+    public SpotLight setKN(double kN) {
+        if(kN < 0 || isZero(kN)) throw new IllegalArgumentException("kN must be greater than zero");
+        this.kN = kN;
+        return this;
+    }
+
     @Override
     public Color getIntensity(Point p) {
-        double denominator = getDenominator(p);
+        primitives.Color point_result = super.getIntensity(p); //DRY
         double cosAngle = direction.normalize().dotProduct(getL(p).normalize());
         if(isZero(cosAngle) || cosAngle < 0){
             return primitives.Color.BLACK;
         }
-        if(isZero(denominator)){
-            throw new IllegalArgumentException("denominator cannot be zero");
-        }
-        return intensity.scale(cosAngle / denominator);
+
+        return point_result.scale(Math.pow(cosAngle, kN));
     }
 
 

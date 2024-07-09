@@ -16,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class TriangleTest {
 
     private final Triangle triangle = new Triangle(new Point(2,0,0), new Point(0,2,0), new Point(0,0,2));
+    private final Triangle triangle2 = new Triangle(new Point(2,-1,2), new Point(0,2,2), new Point(-2,-2,2));
+
 
     /** Test method for {@link geometries.Triangle#getNormal(Point)}. */
     @Test
@@ -49,4 +51,22 @@ class TriangleTest {
         assertNull(triangle.findIntsersections(new Ray(new Point(-2,-1,2), new Vector(1,1,1))), "wrong intersections - point on the plane is on continuation of one of the edges of the triangle");
 
     }
+
+    /** Test method for {@link geometries.Triangle#findGeoIntsersectionsHelper(Ray, double)}. */
+    @Test
+    void testFindIntersectionsDistance() {
+        // ============ Equivalence Partitions Tests ==============
+        // TC00: the intersection point is before the distance
+        assertEquals(List.of(new Intersectable.GeoPoint(triangle2, new Point(0, 0, 2))), triangle2.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0,1)), 3), "incorrect intersection with bounded distance: 3");
+
+        // TC01: the intersection point is after the distance
+        assertNull(triangle2.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0, 1)), 1), "incorrect intersection with bounded distance: 1");
+
+        // =============== Boundary Values Tests ==================
+        // TC10: the intersection point is on the distance
+        assertEquals(List.of(new Intersectable.GeoPoint(triangle2, new Point(0, 0, 2))), triangle2.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0,1)), 2), "incorrect intersection with bounded distance: 2");
+
+    }
 }
+
+

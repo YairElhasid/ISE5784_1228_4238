@@ -48,7 +48,7 @@ public class Plane extends Geometry{
     }
 
     @Override
-    public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
+    protected List<GeoPoint> findGeoIntsersectionsHelper(Ray ray ,double maxDistance ) {
         double denominator = normal.dotProduct(ray.getDirection());
         double nominator = 0;
         if (isZero(denominator)) return null;
@@ -59,6 +59,6 @@ public class Plane extends Geometry{
         double t = nominator / denominator;
         // if the ray start on/after the plane
         if (t<0 || isZero(t)) return null;
-        return List.of(new GeoPoint(this, ray.getPoint(t)));
+        return alignZero(t-maxDistance ) <= 0 ? List.of(new GeoPoint(this, ray.getPoint(t))):null;
     }
 }

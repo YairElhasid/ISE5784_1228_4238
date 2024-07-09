@@ -28,12 +28,12 @@ public class Sphere extends RadialGeometry{
     }
 
     @Override
-    public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
+    protected List<GeoPoint> findGeoIntsersectionsHelper(Ray ray,double maxDistance) {
         Point head = ray.getHead();
         Vector direction = ray.getDirection();
         // if the ray head is at the center of the sphere
         if (center.equals(head))
-            return List.of(new GeoPoint(this, ray.getPoint(radius)) );
+            return alignZero(radius-maxDistance ) <= 0 ?List.of(new GeoPoint(this, ray.getPoint(radius)) ): null;
         Vector u = center.subtract(head);
         double tm = alignZero(direction.dotProduct(u));
         //if the ray is outside the sphere
@@ -46,8 +46,8 @@ public class Sphere extends RadialGeometry{
         if(isZero(th))
             return null;
         if(tm <= th)
-            return List.of(new GeoPoint(this, ray.getPoint(th + tm)));
-        return List.of(new GeoPoint(this, ray.getPoint(tm-th)), new GeoPoint(this, ray.getPoint(th + tm)));
+            return alignZero(th + tm -maxDistance ) <= 0 ? List.of(new GeoPoint(this, ray.getPoint(th + tm))) : null;
+        return alignZero(tm - th - maxDistance ) <= 0 ?  alignZero(tm + th - maxDistance ) <= 0 ? List.of(new GeoPoint(this, ray.getPoint(tm-th)) , new GeoPoint(this, ray.getPoint(th + tm))) : List.of(new GeoPoint(this, ray.getPoint(tm-th))) : null;
     }
 
 }

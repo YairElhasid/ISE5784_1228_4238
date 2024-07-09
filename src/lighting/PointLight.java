@@ -64,19 +64,12 @@ public class PointLight extends Light implements LightSource{
         return this;
     }
 
-    /**
-     * helping method for the get intensity method (DRY)
-     * @param p the point
-     * @return the denominator
-     */
-    protected double getDenominator(Point p){
-        double d = p.distance(position);
-        return kC + (d * kL) + (d * d * kQ);
-    }
 
     @Override
     public Color getIntensity(Point p) {
-        double denominator = getDenominator(p);
+        double d = p.distance(position);
+        double denominator =  kC + (d * kL) + (d * d * kQ);
+
         if(isZero(denominator)){
             throw new IllegalArgumentException("denominator cannot be zero");
         }
@@ -87,4 +80,10 @@ public class PointLight extends Light implements LightSource{
     public Vector getL(Point p) {
         return p.subtract(position);
     }
+
+    @Override
+    public double getDistance(Point p) {
+        return position.distance(p);
+    }
+
 }

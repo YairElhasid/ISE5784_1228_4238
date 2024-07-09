@@ -25,7 +25,17 @@ public abstract class Intersectable {
      * @return list of the intersection Geopoint or null if there isn't
      */
     public  List<GeoPoint> findGeoIntsersections(Ray ray){
-        return findGeoIntsersectionsHelper(ray);
+        return findGeoIntsersections(ray, Double.POSITIVE_INFINITY);
+    }
+
+    /**
+     * find all the GeoPoint intersections between ray and a shape (or collection of shapes) in the define distance
+     * @param ray- the interesecting ray
+     * @return list of the intersection Geopoint or null if there isn't
+     * @param maxDistance- max distance to find intersections
+     */
+    public final List<GeoPoint> findGeoIntsersections(Ray ray, double maxDistance) {
+        return findGeoIntsersectionsHelper(ray, maxDistance);
     }
 
     /**
@@ -33,11 +43,11 @@ public abstract class Intersectable {
      * @param ray- the intresecting ray
      * @return list of the intersection Geopoint or null if there isn't
      */
-    protected abstract List<GeoPoint> findGeoIntsersectionsHelper(Ray ray);
+    protected abstract List<GeoPoint> findGeoIntsersectionsHelper(Ray ray,double maxDistance);
 
 
     /**
-     * PDS for geometry and an Point on it
+     * PDS for geometry and a Point on it
      * @author Sagiv Maoz and Yair Elhasid
      */
     public static class GeoPoint{

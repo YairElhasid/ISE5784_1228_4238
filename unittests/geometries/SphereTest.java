@@ -15,6 +15,7 @@ class SphereTest {
 
     private final Sphere sphere1 = new Sphere(new Point(2, 3, 4), 5);
     private final Sphere sphere2 = new Sphere(new Point(5, 5, 5), 3);
+    private final Sphere sphere3 = new Sphere(new Point(0, 0, 2), 1);
 
     /** Test method for {@link geometries.Sphere#getNormal(Point)}. */
     @Test
@@ -86,6 +87,25 @@ class SphereTest {
 
         // TC23: Ray's line is inside, ray is orthogonal to ray start to sphere's center line (1 point)
         assertEquals(List.of(new Point(6,7,7)), sphere2.findIntsersections(new Ray(new Point(6,5,5), new Vector(0,1,1))), "wrong intersection, orthogonal ray outside the sphere");
+
+    }
+
+    /** Test method for {@link geometries.Sphere#findGeoIntsersectionsHelper(Ray, double)}. */
+    @Test
+    void testFindIntersectionsDistance() {
+        // ============ Equivalence Partitions Tests ==============
+        // TC00: the intersection points is before the distance
+        assertEquals(List.of(new Intersectable.GeoPoint(sphere3, new Point(0,0,1)), new Intersectable.GeoPoint(sphere3, new Point(0,0,3))),sphere3.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0,1)), 5), "incorrect intersection with bounded distance: 5");
+        // TC01: the first intersection point is before the distance and the second is after
+        assertEquals(List.of(new Intersectable.GeoPoint(sphere3, new Point(0,0,1))),sphere3.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0,1)), 2), "incorrect intersection with bounded distance: 3");
+        // TC02: the intersection points is after the distance
+        assertNull(sphere3.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0, 1)), 0.5), "incorrect intersection with bounded distance: 0.5");
+
+        // =============== Boundary Values Tests ==================
+        // TC10: the second intersection point is on the distance
+        assertEquals(List.of(new Intersectable.GeoPoint(sphere3, new Point(0,0,1)), new Intersectable.GeoPoint(sphere3, new Point(0,0,3))),sphere3.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0,1)), 3), "incorrect intersection with bounded distance: 3");
+        // TC11: the first intersection point is on the distance
+        assertEquals(List.of(new Intersectable.GeoPoint(sphere3, new Point(0,0,1))),sphere3.findGeoIntsersectionsHelper(new Ray(new Point(0,0,0), new Vector(0,0,1)), 1), "incorrect intersection with bounded distance: 1");
 
     }
 }
