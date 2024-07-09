@@ -46,7 +46,7 @@ public class SimpleRayTracer extends RayTracerBase {
 
     /**
      * finding the closest intersection point
-     * @param ray the intresecting ray
+     * @param ray the intersecting ray
      * @return the closest intersection point or null if there isn't
      */
     private GeoPoint findClosestIntersection(Ray ray){
@@ -63,12 +63,23 @@ public class SimpleRayTracer extends RayTracerBase {
         return closestPoint == null ? scene.background : calcColor(closestPoint, ray);
     }
 
+    /**
+     * construct refracted ray
+     * @param ray the ray
+     * @param gp the point
+     * @return the refracted ray
+     */
     private Ray constructRefractedRay(Ray ray,GeoPoint gp){
         Point p = gp.point;
         Vector n = gp.geometry.getNormal(p);
         return new Ray(p, n.dotProduct(ray.getDirection()) > 0 ? n: n.scale(-1), ray.getDirection());
     }
-
+    /**
+     * construct reflected ray
+     * @param ray the ray
+     * @param gp the point
+     * @return the reflected ray
+     */
     private Ray constructReflectedRay(Ray ray, GeoPoint gp){
         Point p = gp.point;
         Vector n = gp.geometry.getNormal(p);
@@ -121,7 +132,13 @@ public class SimpleRayTracer extends RayTracerBase {
         double mnr = v.scale(-1).dotProduct(r);
         return mat.kS.scale(Math.pow(alignZero(mnr) > 0 ? mnr: 0, mat.nShininess));
     }
-
+    /**
+     * calculate the local effects on a point
+     * @param gp the point
+     * @param ray the ray
+     * @param k the coefficient
+     * @return the color
+     */
     private primitives.Color calcLocalEffects(GeoPoint gp, Ray ray, Double3 k) {
         Vector n = gp.geometry.getNormal(gp.point);
         Vector v = ray.getDirection();
@@ -146,13 +163,28 @@ public class SimpleRayTracer extends RayTracerBase {
         return color;
     }
 
+    /**
+     * calculate the global effects on a point
+     * @param gp the point
+     * @param ray the ray
+     * @param level times to call the recursive function
+     * @param k the coefficient
+     * @return the color
+     */
     private Color calcGlobalEffects(GeoPoint gp, Ray ray, int level, Double3 k) {
         Material material = gp.geometry.getMaterial();
         return calcGlobalEffect(constructRefractedRay( ray, gp), material.kT, level, k).add(calcGlobalEffect(constructReflectedRay(ray, gp), material.kR, level, k));
     }
 
 
-
+    /**
+     *
+     * @param ray the ray
+     * @param kx when to stop
+     * @param level times to call the recursive function
+     * @param k the coefficient
+     * @return the color
+     */
     private Color calcGlobalEffect(Ray ray, Double3 kx, int level, Double3 k) {
         Double3 kkx = kx.product(k);
         if (kx.lowerThan(MIN_CALC_COLOR_K)) return Color.BLACK;
@@ -179,7 +211,7 @@ public class SimpleRayTracer extends RayTracerBase {
         }
 
         for(GeoPoint intersection : intersections) {
-            finalK.product(intersection.geometry.getMaterial().kT);
+            finalK = finalK.product(intersection.geometry.getMaterial().kT);
             if(finalK.lowerThan(MIN_K))return finalK; //then we won't see the color anyway
         }
         return finalK;
