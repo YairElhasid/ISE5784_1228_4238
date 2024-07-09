@@ -179,7 +179,7 @@ public class SimpleRayTracer extends RayTracerBase {
         }
 
         for(GeoPoint intersection : intersections) {
-            finalK.product(intersection.geometry.getMaterial().kT);
+            finalK = finalK.product(intersection.geometry.getMaterial().kT);
             if(finalK.lowerThan(MIN_K))return finalK; //then we won't see the color anyway
         }
         return finalK;
