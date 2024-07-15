@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="transparency">
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/our_final_test.java" afterDir="false" />
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="transparency done">
+      <change afterPath="$PROJECT_DIR$/src/renderer/Blackboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/lighting/ReflectionRefractionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/lighting/ReflectionRefractionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/our_final_test.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/our_final_test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +123,7 @@
       <recent name="renderer" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.our_final_test">
+  <component name="RunManager" selected="JUnit.ReflectionRefractionTests">
     <configuration name="All in ISE5784_1228_4238" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1228_4238" />
       <option name="PACKAGE_NAME" value="" />
@@ -193,9 +196,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReflectionRefractionTests" />
         <item itemvalue="JUnit.our_final_test" />
         <item itemvalue="JUnit.All in ISE5784_1228_4238" />
-        <item itemvalue="JUnit.ReflectionRefractionTests" />
         <item itemvalue="JUnit.ShadowTests.sphereTriangleInitial" />
         <item itemvalue="JUnit.RenderTests.renderMultiColorTest" />
       </list>
@@ -281,14 +284,12 @@
       <workItem from="1720110041428" duration="15000" />
       <workItem from="1720381492338" duration="1842000" />
       <workItem from="1720461345860" duration="10142000" />
-    </task>
-    <task id="LOCAL‎-00006" summary="unitests - cylinde fix">
-      <option name="closed" value="true" />
-      <created>1716562419059</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL‎-00006" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1716562419059</updated>
+      <workItem from="1720618126373" duration="152000" />
+      <workItem from="1720620262178" duration="75000" />
+      <workItem from="1720620966436" duration="598000" />
+      <workItem from="1720910870641" duration="5000" />
+      <workItem from="1720985500972" duration="1862000" />
+      <workItem from="1721067673546" duration="12831000" />
     </task>
     <task id="LOCAL‎-00007" summary="a">
       <option name="closed" value="true" />
@@ -674,7 +675,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1720535633804</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL‎-00055" summary="transparency done">
+      <option name="closed" value="true" />
+      <created>1720541589450</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL‎-00055" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1720541589450</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,7 +701,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix the tube running time" />
     <MESSAGE value="polygon and plane intersection" />
     <MESSAGE value="find intersection - all done and checked" />
     <MESSAGE value="PRO3" />
@@ -717,6 +725,18 @@
     <MESSAGE value="spekular + transparency testing failed" />
     <MESSAGE value="specular + transparency testing done" />
     <MESSAGE value="transparency" />
-    <option name="LAST_COMMIT_MESSAGE" value="transparency" />
+    <MESSAGE value="transparency done" />
+    <option name="LAST_COMMIT_MESSAGE" value="transparency done" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/renderer/Blackboard.java</url>
+          <line>148</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

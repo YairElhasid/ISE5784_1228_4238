@@ -33,7 +33,7 @@ public class our_final_test {
      */
     private final Camera.Builder cameraBuilder = Camera.getBuilder()
             .setDirection(new Vector(1, 1, 0), new Vector(0, 0, 1))
-            .setRayTracer(new SimpleRayTracer(scene));
+            .setRayTracer(new SimpleRayTracer(scene)).setNumRays(33);
 
     /**
      * Produce a picture of a sphere lighted by a spot light
