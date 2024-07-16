@@ -22,6 +22,9 @@ public class Camera implements Cloneable{
     private double distance = 0.0;
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
+    private int numRays = 1;
+    private Blackboard blackboard;
+
 
     private Camera(){};
 
@@ -90,11 +93,11 @@ public class Camera implements Cloneable{
 
         /**
          * set the location of the camera
-         * @param location - the new point
+         * @param numRays - the number of rays
          * @return - this builder - for concatenation
          */
-        public Builder setLocation(Point location){
-            instance.location = location;
+        public Builder setNumRays(int numRays){
+            instance.numRays = numRays;
             return this;
         }
 
@@ -159,6 +162,16 @@ public class Camera implements Cloneable{
         }
 
         /**
+         * set the number of rays the camera sending to each pixel
+         * @param location - the new point
+         * @return - this builder - for concatenation
+         */
+        public Builder setLocation(Point location){
+            instance.location = location;
+            return this;
+        }
+
+        /**
          * return the final product of the builder and calculate the camera missing arguments
          * @return - the final camera
          */
@@ -176,6 +189,9 @@ public class Camera implements Cloneable{
             instance.vRight = instance.vTo.crossProduct(instance.vUp).normalize();
             //set the center of the view plane point
             instance.pc = instance.location.add(instance.vTo.scale(instance.distance));
+            //set the general black board of this camera
+            instance.blackboard = Blackboard.getBuilder().setPixelHeight(instance.height/instance.imageWriter.getNy()).setPixelWidth(instance.width/instance.imageWriter.getNx()).setNumRows(instance.numRays)
+                    .setVdown(instance.vUp.scale(-1)).setVright(instance.vRight).build();
             try{
                 return (Camera) instance.clone(); // Cloneable - get a full copy
             }
@@ -199,16 +215,31 @@ public class Camera implements Cloneable{
      * @param nY - the index of the pixel in geometric coordinates (,Y)
      * @param j - the index of the pixel in matrix coordinates [i][]
      * @param i - the index of the pixel in matrix coordinates [][j]
+     * @param isCorner if this point is for the blackboard or the construct ray
+     * @return - the ray
+     */
+    private Point constructPoint(int nX, int nY, int j, int i, boolean isCorner){
+        Point Pij = pc;
+        double Rx = width/nX, Ry = height/nY;
+        double yi = -(i - ((double)(nY - (isCorner ? 0 : 1)) / 2)) * Ry;
+        double xj = (j - ((double)(nX - (isCorner ? 0 : 1)) / 2)) * Rx;
+        if (!isZero(xj)) Pij = Pij.add(vRight.scale(xj));
+        if (!isZero(yi)) Pij = Pij.add(vUp.scale(yi));
+        return  Pij;
+    }
+
+
+    /**
+     * creates a ray from the camera point to the specified pixel
+     * @param nX - the index of the pixel in geometric coordinates (X,)
+     * @param nY - the index of the pixel in geometric coordinates (,Y)
+     * @param j - the index of the pixel in matrix coordinates [i][]
+     * @param i - the index of the pixel in matrix coordinates [][j]
      * @return - the ray
      */
     public Ray constructRay(int nX, int nY, int j, int i){
-        Point Pij = pc;
-        double Rx = width/nX, Ry = height/nY;
-        double yi = -(i - ((double)(nY - 1) / 2)) * Ry;
-        double xj = (j - ((double)(nX - 1) / 2)) * Rx;
-        if (!isZero(xj)) Pij = Pij.add(vRight.scale(xj));
-        if (!isZero(yi)) Pij = Pij.add(vUp.scale(yi));
-        return new Ray(location, Pij.subtract(location));
+
+        return new Ray(location, constructPoint(nX, nY, j, i, false).subtract(location));
     }
 
     /**
@@ -226,7 +257,20 @@ public class Camera implements Cloneable{
      * cast ray from any pixel and paint it
      */
     private void castRay(int nX, int nY, int j, int i){
-        imageWriter.writePixel(j, i,rayTracer.traceRay(constructRay(nX,nY,j, i)));
+        if(numRays == 1){
+            imageWriter.writePixel(j, i,rayTracer.traceRay(constructRay(nX,nY,j, i)));
+        }
+        else{
+            int count = 0;
+            primitives.Color finalColor = primitives.Color.BLACK;
+            blackboard.setStartingPoint(constructPoint(nX,nY,j, i, true));
+            for(Ray ray: blackboard.constructRays(location)){
+                count++;
+                finalColor = finalColor.add(rayTracer.traceRay(ray));
+            }
+            imageWriter.writePixel(j, i,finalColor.scale(1/(double)count));
+        }
+
     }
 
     /**

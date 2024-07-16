@@ -37,6 +37,7 @@ public class Scene {
      * source lights of the scene
      */
     public List<LightSource> lights = new LinkedList<>();
+
     /**
      * name constructor
      * @param name - the name if the scene
