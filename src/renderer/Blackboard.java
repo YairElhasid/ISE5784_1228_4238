@@ -15,7 +15,7 @@ import static primitives.Util.isZero;
  */
 public class Blackboard implements Cloneable {
     /**
-     * how random will the place inside the grid will be (jittered)
+     * Constant variable to perform a lottery inside the grid (jittered)
      */
     private static final int MAX_Random = 4;
 
@@ -24,7 +24,7 @@ public class Blackboard implements Cloneable {
     private int numRays = 0; //the pixel will be numRows*numRows amount of mini pixels
     private Vector Vdown;
     private Vector Vright;
-    private Point startingPoint;
+    private Point startingPoint; // The up-left corner of the grid
 
     private Blackboard(){}
 
@@ -86,15 +86,15 @@ public class Blackboard implements Cloneable {
             return this;
         }
 
-        /**
-         * set the StartingPoint of the camera
-         * @param StartingPoint - the new point
-         * @return - this builder - for concatenation
-         */
-        public Blackboard.Builder setStartingPoint(Point StartingPoint){
-            instance.startingPoint = StartingPoint;
-            return this;
-        }
+//        /**
+//         * set the StartingPoint of the camera
+//         * @param StartingPoint - the new point
+//         * @return - this builder - for concatenation
+//         */
+//        public Blackboard.Builder setStartingPoint(Point StartingPoint){
+//            instance.startingPoint = StartingPoint;
+//            return this;
+//        }
 
 
         /**
@@ -119,7 +119,7 @@ public class Blackboard implements Cloneable {
     }
 
     /**
-     * set the starting point of the pixel (top right)
+     * set the starting point of the pixel (top left) directly from the blackboard
      * @param StartingPoint the new starting point
      * @return - this Blackboard for concatenation
      */
@@ -135,6 +135,10 @@ public class Blackboard implements Cloneable {
         return new Blackboard.Builder();
     }
 
+    /**
+     * returns all the points in the pixel - jittered grid
+     * @return - list of the points
+     */
     private LinkedList<Point> constructPoints(){
         LinkedList<Point> points = new LinkedList<>();
         for(double xDirection = 0 ; xDirection < pixelWidth; xDirection+=pixelWidth/numRays){
@@ -144,7 +148,10 @@ public class Blackboard implements Cloneable {
         }
         return points;
     }
-
+    /**
+     * returns all the rays from the camera to the points in the pixel jittered grid
+     * @return - list of the rays
+     */
     public LinkedList<Ray> constructRays(Point p0){
         LinkedList<Point> points = constructPoints();
         LinkedList<Ray> rays = new LinkedList<>();
