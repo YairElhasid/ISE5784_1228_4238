@@ -22,8 +22,8 @@ public class Camera implements Cloneable{
     private double distance = 0.0;
     private ImageWriter imageWriter;
     private RayTracerBase rayTracer;
-    private int numRays = 1;
-    private Blackboard blackboard;
+    private int numRays = 1; // num of rays to each pixel for multi sampling
+    private Blackboard blackboard; // an instance of blackboard for multi sampling
 
 
     private Camera(){};
@@ -215,7 +215,7 @@ public class Camera implements Cloneable{
      * @param nY - the index of the pixel in geometric coordinates (,Y)
      * @param j - the index of the pixel in matrix coordinates [i][]
      * @param i - the index of the pixel in matrix coordinates [][j]
-     * @param isCorner if this point is for the blackboard or the construct ray
+     * @param isCorner if this point is for the blackboard or the construct ray - in the middle
      * @return - the ray
      */
     private Point constructPoint(int nX, int nY, int j, int i, boolean isCorner){
@@ -238,7 +238,7 @@ public class Camera implements Cloneable{
      * @return - the ray
      */
     public Ray constructRay(int nX, int nY, int j, int i){
-
+        // construct one ray to the middle of the pixel
         return new Ray(location, constructPoint(nX, nY, j, i, false).subtract(location));
     }
 
@@ -257,17 +257,20 @@ public class Camera implements Cloneable{
      * cast ray from any pixel and paint it
      */
     private void castRay(int nX, int nY, int j, int i){
+        // regular - one ray to each pixel
         if(numRays == 1){
             imageWriter.writePixel(j, i,rayTracer.traceRay(constructRay(nX,nY,j, i)));
         }
         else{
-            int count = 0;
+            int count = 0; // how much rays we sent from every pixel
             primitives.Color finalColor = primitives.Color.BLACK;
+            // set to the top-left corner of the pixel
             blackboard.setStartingPoint(constructPoint(nX,nY,j, i, true));
             for(Ray ray: blackboard.constructRays(location)){
                 count++;
                 finalColor = finalColor.add(rayTracer.traceRay(ray));
             }
+            // calculate the average color
             imageWriter.writePixel(j, i,finalColor.scale(1/(double)count));
         }
 
