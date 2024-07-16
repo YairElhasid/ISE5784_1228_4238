@@ -36,11 +36,20 @@ public class our_final_test {
             .setRayTracer(new SimpleRayTracer(scene)).setNumRays(33);
 
     /**
-     * Produce a picture of a sphere lighted by a spot light
+     * Camera builder for the tests with triangles without super sampling
+     */
+    private final Camera.Builder cameraBuilder2 = Camera.getBuilder()
+            .setDirection(new Vector(1, 1, 0), new Vector(0, 0, 1))
+            .setRayTracer(new SimpleRayTracer(scene));
+
+    /**
+     * Produce a picture of a sphere lighted by a spot light - with super sampling
      */
     @Test
-    public void OUR() {
+    public void our_with_super() {
         scene.geometries.add(
+                new Plane(new Point(1,0,0), new Point(0,1,0), Point.ZERO).setEmission(new Color(0, 0, 100))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100).setKR(1)),
                 new Sphere(new Point(2,2,2), 1).setEmission(new Color(PINK))
                         .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100)),
                 new Sphere(new Point(2,2,2.75), 0.5).setEmission(new Color(BLACK))
@@ -53,7 +62,7 @@ public class our_final_test {
                         .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100)),
                 new Sphere(new Point(1,1.3,2), 0.1).setEmission(new Color(BLACK))
                         .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100)),
-                new Sphere(new Point(1.4,1.4,1.5), 0.2).setEmission(new Color(RED))
+                new Sphere(new Point(1.4,1.4,1.5), 0.3).setEmission(new Color(RED))
                         .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100).setKT(0.5)),
                 new Triangle(new Point(7,0,0), new Point(0,7,0), new Point(5,5,7)).setEmission(new Color(100, 100, 100))
                         .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100).setKR(1)),
@@ -70,10 +79,53 @@ public class our_final_test {
 
         Camera camera = cameraBuilder.setLocation(new Point(-10, -10, 2)).setVpDistance(300)
                 .setVpSize(150, 150)
-                .setImageWriter(new ImageWriter("ourtest", 500, 500))
+                .setImageWriter(new ImageWriter("ourtest_super", 500, 500))
                 .build();
         camera.renderImage();
         camera.writeToImage();
+    }
+
+    /**
+     * Produce a picture of a sphere lighted by a spot light - without super sampling
+     */
+    @Test
+    public void our_without_super() {
+        scene.geometries.add(
+                new Plane(new Point(1,0,0), new Point(0,1,0), Point.ZERO).setEmission(new Color(0, 0, 100))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100).setKR(1)),
+                new Sphere(new Point(2,2,2), 1).setEmission(new Color(PINK))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100)),
+                new Sphere(new Point(2,2,2.75), 0.5).setEmission(new Color(BLACK))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100)),
+                new Sphere(new Point(1.6,1.1,2), 0.3).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100)),
+                new Sphere(new Point(1.2,1.5,2), 0.3).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100)),
+                new Sphere(new Point(1.4,0.9,2), 0.1).setEmission(new Color(BLACK))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100)),
+                new Sphere(new Point(1,1.3,2), 0.1).setEmission(new Color(BLACK))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100)),
+                new Sphere(new Point(1.4,1.4,1.5), 0.3).setEmission(new Color(RED))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100).setKT(0.5)),
+                new Triangle(new Point(7,0,0), new Point(0,7,0), new Point(5,5,7)).setEmission(new Color(100, 100, 100))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100).setKR(1)),
+
+                new Polygon(new Point(0,-1.5,-1.5), new Point(0,1.5,-1.5), new Point(0,1.5,1.5), new Point(0,-1.5,1.5)).setEmission(new Color(YELLOW))
+                        .setMaterial(new Material().setKD(0.4).setKS(0.3).setNShininess(100).setKT(0.75))
+
+
+        );
+
+        scene.lights.add(
+                new SpotLight(new Point(-100, -100, 500), new Color(1000, 600, 0), new Vector(-1, -1, -1))
+                        .setKL(0.0004).setKQ(0.0000006));
+
+        Camera camera2 = cameraBuilder2.setLocation(new Point(-10, -10, 2)).setVpDistance(300)
+                .setVpSize(150, 150)
+                .setImageWriter(new ImageWriter("ourtest_no_super", 500, 500))
+                .build();
+        camera2.renderImage();
+        camera2.writeToImage();
     }
 
 

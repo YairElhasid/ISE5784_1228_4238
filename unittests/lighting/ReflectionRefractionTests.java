@@ -23,7 +23,7 @@ public class ReflectionRefractionTests {
    /** Camera builder for the tests with triangles */
    private final Camera.Builder cameraBuilder = Camera.getBuilder()
       .setDirection(new Vector(0,0,-1), new Vector(0,1,0))
-      .setRayTracer(new SimpleRayTracer(scene)).setNumRays(30);
+      .setRayTracer(new SimpleRayTracer(scene));
 
    /** Produce a picture of a sphere lighted by a spot light */
    @Test
