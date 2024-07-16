@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="specular + transparency testing done">
+    <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="stage 7 with java doc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/SimpleRayTracer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,14 +278,7 @@
       <workItem from="1720110041428" duration="15000" />
       <workItem from="1720381492338" duration="1842000" />
       <workItem from="1720461345860" duration="10142000" />
-    </task>
-    <task id="LOCAL‎-00005" summary="unitests - plane final tests">
-      <option name="closed" value="true" />
-      <created>1716471153708</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL‎-00005" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1716471153708</updated>
+      <workItem from="1720601801323" duration="177000" />
     </task>
     <task id="LOCAL‎-00006" summary="unitests - cylinde fix">
       <option name="closed" value="true" />
@@ -676,7 +664,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1720474286122</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL‎-00054" summary="stage 7 with java doc">
+      <option name="closed" value="true" />
+      <created>1720541553468</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL‎-00054" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1720541553468</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,7 +690,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="find intersections - sphere and triangle tests done" />
     <MESSAGE value="fix the tube running time" />
     <MESSAGE value="polygon and plane intersection" />
     <MESSAGE value="find intersection - all done and checked" />
@@ -719,6 +714,7 @@
     <MESSAGE value="shadow done:)" />
     <MESSAGE value="spekular + transparency testing failed" />
     <MESSAGE value="specular + transparency testing done" />
-    <option name="LAST_COMMIT_MESSAGE" value="specular + transparency testing done" />
+    <MESSAGE value="stage 7 with java doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="stage 7 with java doc" />
   </component>
 </project>
