@@ -1,4 +1,6 @@
 package primitives;
+import java.util.Objects;
+
 /**
  * The class implements a point object
  * @author Sagiv Maoz and Yair Elhasid
@@ -68,6 +70,16 @@ public class Point {
     public double distance(Point other){
         return Math.sqrt(distanceSquared(other));
     }
+
+    /**
+     * function ti grt the point that is in the middle of two points
+     * @param other  the other point
+     * @return the point in the middle
+     */
+    public Point getMiddle(Point other){
+        return new Point((xyz.d1 + other.xyz.d1) / 2, (xyz.d2 + other.xyz.d2) / 2, (xyz.d3 + other.xyz.d3) / 2);
+    }
+
     @Override
     public String toString() {
         return xyz.toString();
@@ -77,5 +89,10 @@ public class Point {
     public boolean equals(Object obj) {
         if(this == obj) return true;
         return obj instanceof Point other && xyz.equals(other.xyz);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(xyz.d1, xyz.d2, xyz.d3);
     }
 }

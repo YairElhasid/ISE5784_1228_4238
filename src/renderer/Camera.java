@@ -2,6 +2,10 @@ package renderer;
 
 import primitives.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import java.util.MissingResourceException;
 
 import static primitives.Util.*;
@@ -11,6 +15,15 @@ import static primitives.Util.*;
  * @author Sagiv Maoz and Yair Elhasid
  */
 public class Camera implements Cloneable{
+
+    /**
+     * all the corners for the corner list in adaptive super sampling
+     */
+    private static final int TOP_LEFT = 0;
+    private static final int TOP_RIGHT = 1;
+    private static final int BOTTOM_LEFT = 2;
+    private static final int BOTTOM_RIGHT = 3;
+
     private Point location;
     //the center of the view plane:
     private Point pc;
@@ -24,6 +37,7 @@ public class Camera implements Cloneable{
     private RayTracerBase rayTracer;
     private int numRays = 1; // num of rays to each pixel for multi sampling
     private Blackboard blackboard; // an instance of blackboard for multi sampling
+    private boolean isAdaptive = false; //if we are using the adaptive super sampling
 
 
     private Camera(){};
@@ -142,6 +156,17 @@ public class Camera implements Cloneable{
         }
 
         /**
+         * set the adaptive super sampling configuration parameter
+         * @param isAdaptive - the configuration parameter
+         * @return - this builder - for concatenation
+         */
+        public Builder setIsAdaptive(boolean isAdaptive){
+            instance.isAdaptive = isAdaptive;
+            return this;
+        }
+
+
+        /**
          * set the imageWriter of the camera
          * @param imageWriter- the imageWriter of the camera
          * @return - this builder - for concatenation
@@ -243,6 +268,21 @@ public class Camera implements Cloneable{
     }
 
     /**
+     *return list of the 4 edges of a pixel
+     * @param nX - the index of the pixel in geometric coordinates (X,)
+     * @param nY - the index of the pixel in geometric coordinates (,Y)
+     * @param j - the index of the pixel in matrix coordinates [i][]
+     * @param i - the index of the pixel in matrix coordinates [][j]
+     * @return list of the corners: [top left, top right, bottom left, bottom right]
+     */
+    public List<Point> constructFourEdges(int nX, int nY, int j, int i){
+        Point center = constructPoint(nX, nY, j, i, false);
+        Vector up = vUp.scale(height/(2 * nY)), down = vUp.scale(-height/(2 * nY)), left = vRight.scale(-width/(2 * nX)), right = vRight.scale(width/(2 * nX));
+        return new ArrayList(List.of(center.add(up).add(left), center.add(up).add(right), center.add(down).add(left), center.add(down).add(right)));
+    }
+
+
+    /**
      * paint the scene into the imagewriter's image
      */
     public void renderImage(){
@@ -253,26 +293,40 @@ public class Camera implements Cloneable{
             }
         }
     }
+
     /**
      * cast ray from any pixel and paint it
+     * @param nX - the index of the pixel in geometric coordinates (X,)
+     * @param nY - the index of the pixel in geometric coordinates (,Y)
+     * @param j - the index of the pixel in matrix coordinates [i][]
+     * @param i - the index of the pixel in matrix coordinates [][j]
      */
     private void castRay(int nX, int nY, int j, int i){
         // regular - one ray to each pixel
         if(numRays == 1){
             imageWriter.writePixel(j, i,rayTracer.traceRay(constructRay(nX,nY,j, i)));
         }
-        else{
-            int count = 0; // how much rays we sent from every pixel
-            primitives.Color finalColor = primitives.Color.BLACK;
-            // set to the top-left corner of the pixel
-            blackboard.setStartingPoint(constructPoint(nX,nY,j, i, true));
-            for(Ray ray: blackboard.constructRays(location)){
-                count++;
-                finalColor = finalColor.add(rayTracer.traceRay(ray));
+        else{ //if we are doing super sampling:
+            if(!isAdaptive){ //with no acceleration
+                int count = 0; // how much rays we sent from every pixel
+                primitives.Color finalColor = primitives.Color.BLACK;
+                // set to the top-left corner of the pixel
+                blackboard.setStartingPoint(constructPoint(nX,nY,j, i, true));
+                for(Ray ray: blackboard.constructRays(location)){
+                    count++;
+                    finalColor = finalColor.add(rayTracer.traceRay(ray));
+                }
+                // calculate the average color
+                imageWriter.writePixel(j, i,finalColor.scale(1/(double)count));
             }
-            // calculate the average color
-            imageWriter.writePixel(j, i,finalColor.scale(1/(double)count));
+            else{//with acceleration
+                HashMap<Point, primitives.Color> points = new HashMap<>();
+                int initialLevel = (int)(Math.log(numRays - 1) / Math.log(2));
+                List<Point> corners = constructFourEdges(nX,nY,j, i);
+                imageWriter.writePixel(j, i, traceAdaptiveRays(corners.get(TOP_LEFT), corners.get(TOP_RIGHT), corners.get(BOTTOM_LEFT), corners.get(BOTTOM_RIGHT),points, initialLevel));
+            }
         }
+
 
     }
 
@@ -297,5 +351,62 @@ public class Camera implements Cloneable{
         imageWriter.writeToImage();
     }
 
+    /**
+     * calc the color of a pixel by adaptive super sampling formula
+     * @param topLeft the top left corner of the sub pixel
+     * @param topRight the top right corner of the sub pixel
+     * @param bottomLeft the bottom left corner of the sub pixel
+     * @param bottomRight the bottom right corner of the sub pixel
+     * @param points all the points and their colors, so we won't calc the same color twice
+     * @param initialLevel the level of the recursion
+     * @return the color of the pixel of the sub pixel
+     */
+    private primitives.Color traceAdaptiveRays(Point topLeft, Point topRight, Point bottomLeft, Point bottomRight, HashMap<Point, primitives.Color> points, int initialLevel){
+        Point center = topLeft.getMiddle(bottomRight);
+
+        //the end of the recursion
+        if(initialLevel == 0){
+            return rayTracer.traceRay(new Ray(location, center.subtract(location)));
+        }
+
+        primitives.Color topLeftColor = points.getOrDefault(topLeft, null);
+        if(topLeftColor == null){
+            topLeftColor = rayTracer.traceRay(new Ray(location, topLeft.subtract(location)));
+            points.put(topLeft, topLeftColor);
+        }
+
+        primitives.Color topRightColor = points.getOrDefault(topRight, null);
+        if(topRightColor == null){
+            topRightColor = rayTracer.traceRay(new Ray(location, topRight.subtract(location)));
+            points.put(topRight, topRightColor);
+        }
+
+        primitives.Color bottomLeftColor = points.getOrDefault(bottomLeft, null);
+        if(bottomLeftColor == null){
+            bottomLeftColor = rayTracer.traceRay(new Ray(location, bottomLeft.subtract(location)));
+            points.put(bottomLeft, bottomLeftColor);
+        }
+
+        primitives.Color bottomRightColor = points.getOrDefault(bottomRight, null);
+        if(bottomRightColor == null){
+            bottomRightColor = rayTracer.traceRay(new Ray(location, bottomRight.subtract(location)));
+            points.put(bottomRight, bottomRightColor);
+        }
+
+        if(topLeftColor.equals(topRightColor) && topLeftColor.equals(bottomLeftColor) && topLeftColor.equals(bottomRightColor)){
+            return topLeftColor;
+        }
+        else{
+            Point topMiddle = topLeft.getMiddle(topRight);
+            Point bottomMiddle = bottomLeft.getMiddle(bottomRight);
+            Point middleLeft = topLeft.getMiddle(bottomLeft);
+            Point middleRight = topRight.getMiddle(bottomRight);
+            topLeftColor = traceAdaptiveRays(topLeft, topMiddle, middleLeft, center, points, initialLevel - 1).scale(0.25);
+            topRightColor = traceAdaptiveRays(topMiddle, topRight, center, middleRight, points, initialLevel - 1).scale(0.25);
+            bottomLeftColor = traceAdaptiveRays(middleLeft, center, bottomLeft, bottomMiddle, points, initialLevel - 1).scale(0.25);
+            bottomRightColor = traceAdaptiveRays(center, middleRight, bottomMiddle, bottomRight, points, initialLevel - 1).scale(0.25);
+            return topLeftColor.add(topRightColor).add(bottomLeftColor).add(bottomRightColor);
+        }
+    }
 
 }

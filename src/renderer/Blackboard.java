@@ -86,16 +86,6 @@ public class Blackboard implements Cloneable {
             return this;
         }
 
-//        /**
-//         * set the StartingPoint of the camera
-//         * @param StartingPoint - the new point
-//         * @return - this builder - for concatenation
-//         */
-//        public Blackboard.Builder setStartingPoint(Point StartingPoint){
-//            instance.startingPoint = StartingPoint;
-//            return this;
-//        }
-
 
         /**
          * return the final product of the builder and calculate the camera missing arguments
