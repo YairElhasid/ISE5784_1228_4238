@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d523f7c-abb0-4d99-b125-9ee12f3c53e5" name="Changes" comment="adaptive super sampling - done:)">
+      <change afterPath="$PROJECT_DIR$/src/renderer/PixelManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Blackboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Blackboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/FinalPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/FinalPresentation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +32,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="0f9b48c052c7280b662c48016494b55e84857b9e" />
+        <entry key="$PROJECT_DIR$" value="c5387389949c88bf33fb914925afef39f3a27787" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,6 +69,7 @@
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;JUnit.All in ISE5784_1228_4238.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CameraTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FinalPresentation.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.GeometriesTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.ImageWriterTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.ImageWriterTest.testImageWriter.executor&quot;: &quot;Run&quot;,
@@ -99,7 +99,7 @@
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;0f9b48c0&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;detached3&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -301,15 +301,10 @@
       <workItem from="1721126693573" duration="1065000" />
       <workItem from="1721132020372" duration="779000" />
       <workItem from="1721136331737" duration="2786000" />
-      <workItem from="1722410142183" duration="2372000" />
-    </task>
-    <task id="LOCAL‎-00009" summary="unit tests - all finished and working and documented">
-      <option name="closed" value="true" />
-      <created>1716679824775</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL‎-00009" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1716679824775</updated>
+      <workItem from="1722410142183" duration="3910000" />
+      <workItem from="1722504471181" duration="126000" />
+      <workItem from="1722868276394" duration="226000" />
+      <workItem from="1723313122589" duration="13905000" />
     </task>
     <task id="LOCAL‎-00010" summary="unit tests - intersection tests">
       <option name="closed" value="true" />
@@ -695,7 +690,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1721136360886</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL‎-00058" summary="adaptive super sampling - done:)">
+      <option name="closed" value="true" />
+      <created>1722414256726</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL‎-00058" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1722414256727</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -712,7 +715,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="origin/detached3" />
                       </list>
                     </value>
                   </entry>

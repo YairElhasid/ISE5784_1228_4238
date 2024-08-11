@@ -1,12 +1,9 @@
 package renderer;
 
 import primitives.*;
+import primitives.Vector;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import java.util.MissingResourceException;
+import java.util.*;
 
 import static primitives.Util.*;
 
@@ -15,6 +12,14 @@ import static primitives.Util.*;
  * @author Sagiv Maoz and Yair Elhasid
  */
 public class Camera implements Cloneable{
+
+    /** Pixel manager for supporting:
+     * <ul>
+     * <li>multi-threading</li>
+     * <li>debug print of progress percentage in Console window/tab</li>
+     * <ul>
+     */
+    private PixelManager pixelManager;
 
     /**
      * all the corners for the corner list in adaptive super sampling
@@ -38,6 +43,10 @@ public class Camera implements Cloneable{
     private int numRays = 1; // num of rays to each pixel for multi sampling
     private Blackboard blackboard; // an instance of blackboard for multi sampling
     private boolean isAdaptive = false; //if we are using the adaptive super sampling
+
+    //for the threads
+    private int threadsCount = 0;
+    private double debugPrint = 0;
 
 
     private Camera(){};
@@ -197,6 +206,32 @@ public class Camera implements Cloneable{
         }
 
         /**
+         * set the size of the view plane
+         * @param debugPrint the interval of printing
+         * @return - this builder - for concatenation
+         */
+        public Builder setDebugPrint(double debugPrint){
+            if(debugPrint < 0){
+                throw new IllegalArgumentException("debugPrint must be greater than 0");
+            }
+            instance.debugPrint = debugPrint;
+            return this;
+        }
+
+        /**
+         * set the size of the view plane
+         * @param threadsCount the number of threads
+         * @return - this builder - for concatenation
+         */
+        public Builder setThreadsCount(int threadsCount){
+            if(threadsCount < 0){
+                throw new IllegalArgumentException("numThreads must be greater than 0");
+            }
+            instance.threadsCount = threadsCount;
+            return this;
+        }
+
+        /**
          * return the final product of the builder and calculate the camera missing arguments
          * @return - the final camera
          */
@@ -286,12 +321,32 @@ public class Camera implements Cloneable{
      * paint the scene into the imagewriter's image
      */
     public void renderImage(){
-        int nX = imageWriter.getNx(), nY = imageWriter.getNy();
-        for (int i=0;i< nY;i++){
-            for(int j=0;j< nX;j++){
-                castRay(nX,nY,j,i);
-            }
+        //init the pixel manager for threads
+        final int nX = imageWriter.getNx();
+        final int nY = imageWriter.getNy();
+        pixelManager = new PixelManager(nY, nX, debugPrint);
+
+        if (threadsCount == 0)
+            for (int i = 0; i < nY; ++i)
+                for (int j = 0; j < nX; ++j)
+                    castRay(nX, nY, j, i);
+
+        else { // see further... option 2
+            var threads = new LinkedList<Thread>(); // list of threads
+            while (threadsCount-- > 0) // add appropriate number of threads
+                threads.add(new Thread(() -> { // add a thread with its code
+                    PixelManager.Pixel pixel; // current pixel(row,col)
+                    // allocate pixel(row,col) in loop until there are no more pixels
+                    while ((pixel = pixelManager.nextPixel()) != null)
+                        // cast ray through pixel (and color it – inside castRay)
+                        castRay(nX, nY, pixel.col(), pixel.row());
+                }));
+            // start all the threads
+            for (var thread : threads) thread.start();
+            // wait until all the threads have finished
+            try { for (var thread : threads) thread.join(); } catch (InterruptedException ignore) {}
         }
+
     }
 
     /**
@@ -305,6 +360,7 @@ public class Camera implements Cloneable{
         // regular - one ray to each pixel
         if(numRays == 1){
             imageWriter.writePixel(j, i,rayTracer.traceRay(constructRay(nX,nY,j, i)));
+            pixelManager.pixelDone();
         }
         else{ //if we are doing super sampling:
             if(!isAdaptive){ //with no acceleration
@@ -318,12 +374,15 @@ public class Camera implements Cloneable{
                 }
                 // calculate the average color
                 imageWriter.writePixel(j, i,finalColor.scale(1/(double)count));
+                pixelManager.pixelDone();
             }
             else{//with acceleration
                 HashMap<Point, primitives.Color> points = new HashMap<>();
                 int initialLevel = (int)(Math.log(numRays - 1) / Math.log(2));
                 List<Point> corners = constructFourEdges(nX,nY,j, i);
                 imageWriter.writePixel(j, i, traceAdaptiveRays(corners.get(TOP_LEFT), corners.get(TOP_RIGHT), corners.get(BOTTOM_LEFT), corners.get(BOTTOM_RIGHT),points, initialLevel));
+                pixelManager.pixelDone();
+
             }
         }
 

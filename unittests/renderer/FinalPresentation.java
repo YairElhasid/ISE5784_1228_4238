@@ -4,6 +4,7 @@ import geometries.Plane;
 import geometries.Polygon;
 import geometries.Sphere;
 import geometries.Triangle;
+import lighting.DirectionalLight;
 import lighting.PointLight;
 import lighting.SpotLight;
 import org.junit.jupiter.api.Test;
@@ -42,8 +43,6 @@ public class FinalPresentation {
         //the walls:
         scene.geometries.add(
                 new Plane(new Point(-10000, 0,0), new Point(0, -10000, 0), new Point(-10000, 0, 1)).setEmission(new Color(120, 120, 120))
-                        .setMaterial(new Material().setKD(1).setKS(1).setNShininess(1000)),
-                new Plane(new Point(-10000, 0,10000), new Point(0, -10000, 10000), new Point(-10001, 0, 10000)).setEmission(new Color(120, 120, 120))
                         .setMaterial(new Material().setKD(1).setKS(1).setNShininess(1000)),
                 new Polygon(new Point(30, 30, 0), new Point(-30, 30, 0), new Point(-30, -30, 0), new Point(30, -30, 0)).setEmission(new Color(100, 100, 100))
                         .setMaterial(new Material().setKD(1).setKS(1).setNShininess(1000)),
@@ -243,11 +242,18 @@ public class FinalPresentation {
         scene.lights.add(
                 new PointLight(new Point(-500, -500, 500), new Color(WHITE))
                         .setKL(0.0004).setKQ(0.0000006));
-        scene.background = new Color(GREEN);
+        scene.lights.add(new DirectionalLight(new Color(0, 0, 50), new Vector(0, 0, -1)));
+        scene.lights.add(new SpotLight(new Point(-50, -50, 30), new Color(50, 0, 0), new Vector(1, 1, -0.001)));
+        scene.lights.add(new SpotLight(new Point(0, -50, 30), new Color(50, 0, 50), new Vector(0, 1, -0.001)));
+        scene.lights.add(new SpotLight(new Point(-50, 0, 30), new Color(0, 50, 50), new Vector(1, 0, -0.001)));
+        scene.background = new Color(120, 120, 120);
 
         Camera camera = cameraBuilder.setLocation(new Point(-30, -30, 7)).setVpDistance(300)
                 .setVpSize(150, 150)
-                .setRayTracer(new SimpleRayTracer(scene)).setNumRays(33).setIsAdaptive(true)
+
+                .setRayTracer(new SimpleRayTracer(scene))
+                .setIsAdaptive(true)
+                .setNumRays(33)
                 .setImageWriter(new ImageWriter("final_presentation", 500, 500))
                 .build();
         camera.renderImage();
